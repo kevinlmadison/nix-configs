@@ -6,8 +6,8 @@
     [ # Include the results of the hardware scan.
       ./tmux.nix
       ./zellij.nix
-      ./neovim.nix
-      ./nushell.nix
+      ./neovim
+      ./nushell
       # ./wayland.nix
       # ./waybar.nix
     ];

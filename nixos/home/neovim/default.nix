@@ -1,14 +1,14 @@
 { pkgs, ... }:
 {
   imports = [
-    ./neovim/telescope.nix
-    ./neovim/coc.nix
-    ./neovim/haskell.nix
-    #./neovim/rust.nix
-    #./neovim/zk.nix
+    ./plugins/telescope.nix
+    ./plugins/coc.nix
+    ./plugins/haskell.nix
+    #./plugins/rust.nix
+    #./plugins/zk.nix
     # which-key must be the last import for it to recognize the keybindings of
     # previous imports.
-    ./neovim/which-key.nix
+    ./plugins/which-key.nix
   ];
   programs.neovim = {
     enable = true;

@@ -16,12 +16,12 @@
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
-          ./configuration.nix
+          ./hosts/x220
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.kelevra = import ./home.nix;
+            home-manager.users.kelevra = import ./home;
           }
         ];
       };
