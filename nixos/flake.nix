@@ -31,7 +31,7 @@
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
-          ./hosts/xps
+          ./hosts/xps/default.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
