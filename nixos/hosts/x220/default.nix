@@ -168,7 +168,7 @@ in
     swww
     rofi-wayland
     xfce.thunar
-    (import ./scripts/k_reload.nix { inherit pkgs; })
+    (import ../scripts/k_reload.nix { inherit pkgs; })
     helix.packages."${pkgs.system}".helix
   ];
 
