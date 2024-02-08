@@ -1,4 +1,4 @@
-{ config, pkgs, helix, ... }:
+{ config, pkgs, inputs, ... }:
 {
   networking.networkmanager.enable = true;
 
@@ -21,6 +21,7 @@
   };
 
   programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -120,7 +121,6 @@
     rofi-wayland
     xfce.thunar
     (import ../scripts/k_reload.nix { inherit pkgs; })
-    helix.packages."${pkgs.system}".helix
   ];
 
   #programs.zsh.enable = true;
@@ -152,4 +152,9 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  services.tailscale.enable = true;
+  networking.nameservers = [ "100.100.100.100" ];
+  networking.search = [ "taile7d08.ts.net" ];
+
+  taile7d08.ts.net
 }

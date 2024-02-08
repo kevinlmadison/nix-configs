@@ -2,6 +2,7 @@
   description = "Kevin's NixOS Flake";
 
   inputs = {
+    hyprland.url = "github:hyprwm/Hyperland";
     helix.url = "github:helix-editor/helix/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     home-manager = {
