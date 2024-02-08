@@ -2,7 +2,7 @@
 {
   imports =
     [
-      (import ./system.nix { inherit inputs config;})
+      (import ./system.nix { inherit config pkgs inputs;})
       ./tailscale.nix
     ];
 }
