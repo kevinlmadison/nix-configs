@@ -2,8 +2,11 @@
   description = "Kevin's NixOS Flake";
 
   inputs = {
+
     hyprland.url = "github:hyprwm/Hyprland";
-    helix.url = "github:helix-editor/helix/master";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland.inputs.systems.follows = "systems";
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -18,7 +21,7 @@
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
-          ./hosts/x220
+          ./hosts/x220/default.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

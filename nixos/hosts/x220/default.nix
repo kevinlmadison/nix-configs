@@ -6,7 +6,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      (import ../common/system.nix {inherit inputs;})
+      (import ../common/system.nix {inherit config pkgs inputs;})
       ../common/tailscale.nix
       ./hardware-configuration.nix
     ];
