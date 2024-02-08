@@ -6,7 +6,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      (import ../common {inherits config pkgs inputs;})
+      (import ../common { inherit config pkgs inputs; })
       ./hardware-configuration.nix
     ];
 
