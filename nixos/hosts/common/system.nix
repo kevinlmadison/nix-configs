@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 {
   imports =
     [
@@ -25,7 +25,6 @@
   };
 
   programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
