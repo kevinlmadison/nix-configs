@@ -3,8 +3,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      ../common
       ./hardware-configuration.nix
-      ../common/system.nix
     ];
 
   # Bootloader.
