@@ -3,7 +3,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ../common
+      ../common/system.nix
+      ../common/tailscale.nix
       ./hardware-configuration.nix
     ];
 
