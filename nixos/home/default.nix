@@ -18,6 +18,7 @@
       l = "lsd -alF";
       c = "cd";
       e = "nvim";
+      gcm = "git commit -m";
       se = "sudoedit";
       conf = "sudoedit /etc/nixos/configuration.nix";
       # update = "sudo nixos-rebuild switch";
