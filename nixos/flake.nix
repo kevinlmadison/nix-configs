@@ -4,8 +4,6 @@
   inputs = {
 
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.inputs.systems.follows = "systems";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     home-manager = {
