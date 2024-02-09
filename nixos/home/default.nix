@@ -105,7 +105,7 @@
     enable = true;
     settings = {
       font = {
-        size = 6;
+        size = 8;
         normal = {
           family = "GohuFont";
           style  = "Regular";
