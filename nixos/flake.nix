@@ -17,7 +17,7 @@
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
-          ./hosts/x220/default.nix
+          ./hosts/thinkpad/default.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
