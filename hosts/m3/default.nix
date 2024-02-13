@@ -1,9 +1,20 @@
 { pkgs, inputs, ... }: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    [ pkgs.vim
-    ];
+  imports = [
+      ./tailscale.nix
+  ];
+
+  environment.systemPackages = with pkgs; [ 
+    neovim
+    git
+    fzf
+    kitty
+    clang
+  ];
+
+  # https://github.com/nix-community/home-manager/issues/4026
+  users.users.kelevra.home = "/Users/kelevra";
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;

@@ -15,10 +15,17 @@
 
   outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs: {
     darwinConfigurations = {
-      "Kevins-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+      "m3" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         specialArgs = { inherit inputs; };
         modules = [
 	  ./hosts/m3/default.nix 
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.kelevra = import ./hosts/m3/home.nix;
+          }
         ];
       };
     };

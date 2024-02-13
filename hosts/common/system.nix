@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 {
-  imports =
-    [
+  imports = [
       ./tailscale.nix
-    ];
+  ];
+
   networking.networkmanager.enable = true;
 
   # Set your time zone.
