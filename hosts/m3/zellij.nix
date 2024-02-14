@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+
   programs.zellij = {
     enable = true;
     settings = {
@@ -8,7 +9,7 @@
       default_layout = "compact";
       pane_frames = true;
       simplified_ui = true;
-      theme = if pkgs.system == "aarch64-darwin" then "gruvbox-dark" else "dracula";
+      theme = if pkgs.system == "aarch64-darwin" then "dracula" else "gruvbox-dark";
       # https://github.com/nix-community/home-manager/issues/3854
       themes.gruvbox-dark = {
         fg = [213 196 161];

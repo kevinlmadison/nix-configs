@@ -1,7 +1,20 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, osConfig, ... }: {
+
   nixpkgs.config = {
     allowUnfree = true;
   };
+  # envFile.text = lib.optionalString (osConfig ? environment) ''
+  #   $env.PATH = ${builtins.replaceStrings
+  #   [
+  #       "$USER"
+  #       "$HOME"
+  #   ]
+  #   [
+  #       config.home.username
+  #       config.home.homeDirectory
+  #   ]
+  #   osConfig.environment.systemPath}
+  # '';
   imports =
     [ # Include the results of the hardware scan.
       ./zellij.nix
@@ -13,8 +26,6 @@
 
   home.username = "kelevra";
   home.homeDirectory = "/Users/kelevra";
-  # Commented because of the following error msg:
-  # Error: HOME is set to "/Users/kelevra" but we expect "/var/empty"
   home.shellAliases = {
       l = "lsd -alF";
       c = "cd";
@@ -92,10 +103,13 @@
 
   programs.kitty = {
     enable = true;
+    settings = {
+      macos_option_as_alt = "yes";
+    };
     font = {
       package = pkgs.gohufont;
       name = "GohuFont 14 Nerd Font";
-      size = 10;
+      size = 13;
     };
   };
 

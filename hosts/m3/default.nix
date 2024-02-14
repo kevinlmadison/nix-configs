@@ -14,7 +14,10 @@
   ];
 
   # https://github.com/nix-community/home-manager/issues/4026
-  users.users.kelevra.home = "/Users/kelevra";
+  users.users.kelevra = {
+    home = "/Users/kelevra";
+    name = "kelevra";
+  };
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
