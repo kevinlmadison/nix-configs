@@ -1,27 +1,14 @@
-{ config, pkgs, lib, osConfig, ... }: {
+{ config, pkgs, lib, ... }: {
 
   nixpkgs.config = {
     allowUnfree = true;
   };
-  # envFile.text = lib.optionalString (osConfig ? environment) ''
-  #   $env.PATH = ${builtins.replaceStrings
-  #   [
-  #       "$USER"
-  #       "$HOME"
-  #   ]
-  #   [
-  #       config.home.username
-  #       config.home.homeDirectory
-  #   ]
-  #   osConfig.environment.systemPath}
-  # '';
+
   imports =
     [ # Include the results of the hardware scan.
       ./zellij.nix
       ./neovim
       ./nushell
-      # ./wayland.nix
-      # ./waybar.nix
     ];
 
   home.username = "kelevra";
@@ -32,8 +19,7 @@
       e = "nvim";
       gcm = "git commit -m";
       se = "sudoedit";
-      # update = "sudo nixos-rebuild switch";
-      update = "sudo darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure";
+      update = "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure";
     };
 
   home.packages = with pkgs; [
@@ -82,19 +68,7 @@
     userEmail = "coolklm121@gmail.com";
   };
 
-  # programs.helix = {
-  #   enable = true;
-  #   # defaultEditor = true;
-  #   settings = {
-  #     theme = "autumn_night";
-  #     editor = {
-  #       line-number = "relative";
-  #       lsp.display-messages = true;
-  #       soft-wrap.enable = true;
-  #     };
-  #   };
-  # };
-
+  programs.home-manager.enable = true;
   programs.zoxide = {
     enable = true;
     enableNushellIntegration = true;
@@ -158,7 +132,7 @@
     autocd = true;
     history = {
       save = 10000;
-      path = "/home/kelevra/.histfile";
+      path = "/Users/kelevra/.histfile";
     };
     oh-my-zsh = {
       enable = true;
