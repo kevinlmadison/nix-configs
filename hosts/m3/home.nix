@@ -1,9 +1,5 @@
 { config, pkgs, lib, ... }: {
 
-  # nixpkgs.config = {
-  #   allowUnfree = true;
-  # };
-
   imports =
     [ # Include the results of the hardware scan.
       ./zellij.nix
