@@ -23,7 +23,7 @@
         system = "aarch64-darwin";
         specialArgs = { inherit inputs; };
         modules = [
-	  ./hosts/m3/default.nix 
+	        ./hosts/m3/default.nix 
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
