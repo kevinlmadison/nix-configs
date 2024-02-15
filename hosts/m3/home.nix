@@ -3,6 +3,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./zellij.nix
+      ./starship.nix
       ./neovim
       ./nushell
     ];
