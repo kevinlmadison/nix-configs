@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }: {
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  # nixpkgs.config = {
+  #   allowUnfree = true;
+  # };
 
   imports =
     [ # Include the results of the hardware scan.
@@ -45,11 +45,11 @@
     entr
     kubectl
     gohufont
-    #awscli
-    #kubernetes-helm
-    #helmfile
-    #terraform
-    #ansible
+    awscli
+    kubernetes-helm
+    helmfile
+    terraform
+    ansible
   ];
   fonts.fontconfig.enable = true;
 
