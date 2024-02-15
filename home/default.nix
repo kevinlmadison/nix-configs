@@ -8,6 +8,7 @@
       ./zellij.nix
       ./neovim
       ./nushell
+      ./starship.nix
       # ./wayland.nix
       # ./waybar.nix
     ];
@@ -72,19 +73,6 @@
     userName = "kevinlmadison";
     userEmail = "coolklm121@gmail.com";
   };
-
-  # programs.helix = {
-  #   enable = true;
-  #   # defaultEditor = true;
-  #   settings = {
-  #     theme = "autumn_night";
-  #     editor = {
-  #       line-number = "relative";
-  #       lsp.display-messages = true;
-  #       soft-wrap.enable = true;
-  #     };
-  #   };
-  # };
 
   programs.zoxide = {
     enable = true;
