@@ -11,10 +11,13 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Home Manager
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Nix Vim
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs: {
@@ -33,7 +36,7 @@
         ];
       };
     };
-    darwinPackages = self.darwinConfigurations."Kevins-MacBook-Pro".pkgs;
+    darwinPackages = self.darwinConfigurations."m3".pkgs;
 
     nixosConfigurations = {
 
