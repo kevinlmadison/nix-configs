@@ -112,6 +112,7 @@
         "type": "github"
       }
     },
+<<<<<<< HEAD
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
@@ -130,6 +131,23 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+=======
+    "j-link": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1707968121,
+        "narHash": "sha256-8I20jgAACu5Cy1dTSuaNDDSLB/Rrz3FEmFT4OVLo2ak=",
+        "owner": "liff",
+        "repo": "j-link-flake",
+        "rev": "ee9cdd15985566a6a2909f260b691f6d41f18003",
+        "type": "github"
+      },
+      "original": {
+        "owner": "liff",
+        "repo": "j-link-flake",
+>>>>>>> c7656f3 (add risc v toolchain stuff)
         "type": "github"
       }
     },
@@ -175,6 +193,20 @@
       }
     },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1708093448,
+        "narHash": "sha256-gohEm3/NVyu7WINFhRf83yJH8UM2ie/KY9Iw3VN6fiE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c7763249f02b7786b4ca36e13a4d7365cfba162f",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1706515015,
         "narHash": "sha256-eFfY5A7wlYy3jD/75lx6IJRueg4noE+jowl0a8lIlVo=",
@@ -246,7 +278,9 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "j-link": "j-link",
         "nix-darwin": "nix-darwin",
+<<<<<<< HEAD
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim"
       }
@@ -264,6 +298,9 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+=======
+        "nixpkgs": "nixpkgs_2"
+>>>>>>> c7656f3 (add risc v toolchain stuff)
       }
     }
   },

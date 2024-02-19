@@ -112,9 +112,13 @@
     zsh
     wezterm
     kitty
-    clang
+    #clang
     #lsd
     #tmux
+    dtc
+    gnumake
+    gcc
+    bc
     wget
     networkmanagerapplet
     dunst
@@ -123,6 +127,7 @@
     swww
     rofi-wayland
     xfce.thunar
+    xfce.thunar-volman
     (import ../scripts/k_reload.nix { inherit pkgs; })
   ];
 

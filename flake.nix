@@ -18,9 +18,18 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
+    # J-Link Installer Flake
+    j-link.url = "github:liff/j-link-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs: {
+  outputs = {
+    self,
+    nixpkgs, 
+    home-manager,
+    nix-darwin, 
+    j-link,
+    ...
+  }@inputs: {
     darwinConfigurations = {
       "m3" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -51,6 +60,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.kelevra = import ./home;
           }
+          j-link.nixosModule
         ];
       };
 
