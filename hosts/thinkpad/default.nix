@@ -46,6 +46,11 @@
    #
   ## Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 33557 ];
+  systemd.services.NetworkManager-wait-online = {
+    serviceConfig = {
+      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+    };
+  };
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

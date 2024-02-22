@@ -5,14 +5,18 @@
 
     # Nix Packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-
-    # Nix Darwin
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
+    
     # Home Manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Nix Hardware Modules
+    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    
+    # Nix Darwin
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Vim
     nixvim.url = "github:nix-community/nixvim";
@@ -26,7 +30,9 @@
     self,
     nixpkgs, 
     home-manager,
+    nixos-hardware,
     nix-darwin, 
+    nixvim,
     j-link,
     ...
   }@inputs: {
@@ -60,7 +66,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.kelevra = import ./home;
           }
-          j-link.nixosModule
+          nixos-hardware.nixosModules.lenovo-thinkpad-x220
         ];
       };
 
@@ -75,6 +81,8 @@
             home-manager.useUserPackages = true;
             home-manager.users.kelevra = import ./home;
           }
+          j-link.nixosModule
+          nixos-hardware.nixosModules.dell-xps-13-9360
         ];
       };
     };
