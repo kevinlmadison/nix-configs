@@ -150,7 +150,11 @@
   ## };
    #
   ## List services that you want to enable:
-    
+  systemd.services.NetworkManager-wait-online = {
+    serviceConfig = {
+      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+    };
+  };
   ## Enable the OpenSSH daemon.
   # services.openssh.enable = true;
   # services.openssh.ports = [ 33557 ];

@@ -23,7 +23,7 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     # J-Link Installer Flake
-    j-link.url = "github:liff/j-link-flake";
+    #j-link.url = "github:liff/j-link-flake";
   };
 
   outputs = {
@@ -33,7 +33,7 @@
     nixos-hardware,
     nix-darwin, 
     nixvim,
-    j-link,
+    #j-link,
     ...
   }@inputs: {
     darwinConfigurations = {
@@ -81,7 +81,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.kelevra = import ./home;
           }
-          j-link.nixosModule
+          #j-link.nixosModule
           nixos-hardware.nixosModules.dell-xps-13-9360
         ];
       };
