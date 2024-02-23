@@ -30,6 +30,7 @@
     cmatrix
     mpd
     bat
+    btop
     zlib
     pypy3
     k9s
