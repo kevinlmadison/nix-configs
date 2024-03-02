@@ -27,6 +27,7 @@
     };
 
   home.packages = with pkgs; [
+    google-chrome
     cmatrix
     mpd
     bat

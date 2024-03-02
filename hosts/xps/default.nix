@@ -5,6 +5,7 @@
     [ # Include the results of the hardware scan.
       ../common/system.nix
       ../common/tailscale.nix
+      # ./android.nix
       ./hardware-configuration.nix
     ];
 
@@ -23,7 +24,7 @@
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
-    xkbVariant = "colemak_dh_ortho";
+    # xkbVariant = "colemak_dh_ortho";
   };
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -129,6 +129,7 @@
     xfce.thunar
     xfce.thunar-volman
     (import ../scripts/k_reload.nix { inherit pkgs; })
+    (import ../scripts/swap_kb_layout.nix { inherit pkgs; })
   ];
 
   #programs.zsh.enable = true;
