@@ -44,6 +44,7 @@
 	        ./hosts/m3/default.nix 
           home-manager.darwinModules.home-manager
           {
+
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.kelevra = import ./hosts/m3/home.nix;
@@ -54,6 +55,20 @@
     darwinPackages = self.darwinConfigurations."m3".pkgs;
 
     nixosConfigurations = {
+      "rpi" = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+          {
+            config = {
+              system = {
+                stateVersion = "23.11";
+                build.sdImage.compressImage = lib.mkForce false;
+              };
+            };
+          }
+        ];
+      };
 
       "thinkpad" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
