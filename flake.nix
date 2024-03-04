@@ -55,15 +55,22 @@
     darwinPackages = self.darwinConfigurations."m3".pkgs;
 
     nixosConfigurations = {
+      # nix build .#nixosConfigurations.rpi.config.system.build.sdImage
       "rpi" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
+          ./hosts/rpi
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.kelevra = import ./home/rpi;
+          }
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
           {
             config = {
               system = {
                 stateVersion = "23.11";
-                build.sdImage.compressImage = lib.mkForce false;
               };
             };
           }
