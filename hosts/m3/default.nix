@@ -27,7 +27,7 @@ in {
   # nix.package = pkgs.nix;
 
   # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+  # nix.settings.experimental-features = "nix-command flakes";
 
   nixpkgs.config.allowUnfree = true;
 
@@ -48,8 +48,10 @@ in {
   # nix configuration
   nix = {
     settings = {
+      experimental-features = "nix-command flakes";
       trusted-users = [
         "@admin"
+        "kelevra"
       ];
     };
     linux-builder = {
@@ -58,7 +60,6 @@ in {
     };
   };
   services.activate-system.enable = true;
-  services.nix-daemon.enable = true;
   programs.nix-index.enable = true;
 
   environment.shells = with pkgs; [
@@ -146,5 +147,4 @@ in {
 
   # Use touch ID for sudo auth
   security.pam.enableSudoTouchIdAuth = true;
-}
 }

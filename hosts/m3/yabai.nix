@@ -1,8 +1,13 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }: 
+
+let
+  system = pkgs.system;
+in
+{
 
   services.yabai = {
     enable = true;
-    enableScriptingAddition = true;
+    # enableScriptingAddition = true;
     package = pkgs.yabai;
     extraConfig = ''
       yabai -m config window_placement             first_child
