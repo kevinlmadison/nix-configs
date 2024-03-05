@@ -1,4 +1,9 @@
 { config, pkgs, ... }:
+
+let
+  user = "kelevra";
+  password = "testtest";
+in
 {
   imports = [ ./tailscale.nix ];
 
@@ -23,11 +28,12 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
-  users.users.kelevra = {
+  users.users."${user}" = {
     isNormalUser = true;
     description = "Kevin Madison";
     extraGroups = [ "networkmanager" "wheel" "dbus"];
     shell = pkgs.zsh;
+    password = password;
     #packages = with pkgs; [
     #  firefox
     ##  thunderbird
@@ -65,6 +71,6 @@
     };
   };
   services.openssh.enable = true;
-  services.openssh.ports = [ 33557 ];
-  networking.firewall.allowedTCPPorts = [ 33557 ];
+  services.openssh.ports = [ 22 ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
 }
