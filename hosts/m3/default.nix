@@ -7,6 +7,8 @@ in {
   imports = [
       ./tailscale.nix
       ./yabai.nix
+      ./sketchybar.nix
+      ./pkgs.nix
   ];
 
   environment.systemPackages = with pkgs; [ 

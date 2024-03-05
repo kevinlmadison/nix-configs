@@ -17,7 +17,7 @@
       e = "nvim";
       gcm = "git commit -m";
       se = "sudoedit";
-      update = "darwin-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
+      update = "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure";
     };
 
   home.packages = with pkgs; [
