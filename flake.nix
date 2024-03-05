@@ -5,6 +5,8 @@
 
     # Nix Packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
     
     # Home Manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
@@ -22,8 +24,6 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
-    # J-Link Installer Flake
-    #j-link.url = "github:liff/j-link-flake";
   };
 
   outputs = {
@@ -33,7 +33,6 @@
     nixos-hardware,
     nix-darwin, 
     nixvim,
-    #j-link,
     ...
   }@inputs: {
     darwinConfigurations = {

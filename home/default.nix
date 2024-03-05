@@ -23,7 +23,7 @@
       se = "sudoedit";
       conf = "sudoedit /etc/nixos/configuration.nix";
       # update = "sudo nixos-rebuild switch";
-      update = "sudo nixos-rebuild switch --flake /etc/nixos#nixos-test --impure";
+      update = "sudo nixos-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
     };
 
   home.packages = with pkgs; [

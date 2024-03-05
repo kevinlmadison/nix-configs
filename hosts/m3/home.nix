@@ -10,18 +10,17 @@
 
   home.username = "kelevra";
   home.homeDirectory = "/Users/kelevra";
+  home.sessionVariables.LIBRARY_PATH = ''${lib.makeLibraryPath [pkgs.libiconv]}''${LIBRARY_PATH:+:$LIBRARY_PATH}'';
   home.shellAliases = {
       l = "lsd -alF";
       c = "cd";
       e = "nvim";
       gcm = "git commit -m";
       se = "sudoedit";
-      update = "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure";
+      update = "darwin-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
     };
 
   home.packages = with pkgs; [
-    skhd
-    yabai
     cmatrix
     bat
     k9s
