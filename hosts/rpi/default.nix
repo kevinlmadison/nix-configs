@@ -70,6 +70,8 @@ in
       ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
     };
   };
+  programs.ssh.startAgent = true;
+  programs.pam.enableSSHAgentAuth = true; 
   services.openssh.enable = true;
   services.openssh.ports = [ 22 ];
   networking.firewall.allowedTCPPorts = [ 22 ];
