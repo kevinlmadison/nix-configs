@@ -81,7 +81,7 @@
     # given the users in this list the right to specify additional substituters via:
     #    1. `nixConfig.substituers` in `flake.nix`
     #    2. command line args `--options substituers http://xxx`
-    trusted-users = ["kelevra"];
+    trusted-users = ["kelevra" "nixremote"];
 
     substituters = [
       # cache mirror located in China
@@ -162,10 +162,10 @@
   services.openssh = {
     enable = true;
     ports = [ 22 ];
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-    };
+    # settings = {
+    #   PasswordAuthentication = false;
+    #   KbdInteractiveAuthentication = false;
+    # };
   };
 
    #
