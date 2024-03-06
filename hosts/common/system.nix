@@ -159,8 +159,15 @@
   ## Enable the OpenSSH daemon.
   programs.ssh.startAgent = true;
   security.pam.enableSSHAgentAuth = true;
-  services.openssh.enable = true;
-  services.openssh.ports = [ 22 ];
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
+  };
+
    #
   ## Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
