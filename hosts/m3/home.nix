@@ -126,6 +126,9 @@
     enable = true;
     enableAutosuggestions = true;
     autocd = true;
+    initExtraFirst = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
     history = {
       save = 10000;
       path = "/Users/kelevra/.histfile";

@@ -10,7 +10,7 @@ let
     fi
   '';
   window-title-sh = pkgs.writeShellScriptBin "window_title.sh" ''
-    WINDOW_TITLE=$(${pkgs.yabai}/bin/yabai -m query --windows --window | ${pkgs.jq}/bin/jq -r '.app')
+    WINDOW_TITLE=$(yabai -m query --windows --window | ${pkgs.jq}/bin/jq -r '.app')
     if [[ $WINDOW_TITLE != "" ]]; then
       sketchybar -m --set title label="$WINDOW_TITLE"
     else
@@ -129,6 +129,8 @@ in {
       jetbrains-mono
     ];
     config = ''
+      #!/usr/bin/env bash
+
       ############## BAR ##############
         sketchybar -m --bar \
           height=32 \
@@ -165,62 +167,61 @@ in {
           --set apple icon.font="JetBrainsMono Nerd Font Mono:Regular:20.0" \
           --set apple label.padding_right=0 \
 
-        # SPACE 1: WEB ICON
-        sketchybar -m --add space web left \
-          --set web icon= \
-          --set web icon.highlight_color=0xff8CABC8 \
-          --set web associated_space=1 \
-          --set web icon.padding_left=5 \
-          --set web icon.padding_right=5 \
-          --set web label.padding_right=0 \
-          --set web label.padding_left=0 \
-          --set web label.color=0xffeceff4 \
-          --set web background.color=0xff57627A  \
-          --set web background.height=21 \
-          --set web background.padding_left=12 \
-          --set web click_script="open -a Firefox.app" \
+        # SPACES: NUMBERS
+        for s in "1" "2" "3" "4" "5" "6" "7" "8" "9" "0";
+        do 
+          sketchybar -m --add space "$s" left \
+            --set "$s" icon="$s"\
+            --set "$s" associated_space="$s" \
+            --set "$s" icon.padding_left=5 \
+            --set "$s" icon.padding_right=5 \
+            --set "$s" label.padding_right=0 \
+            --set "$s" label.padding_left=0 \
+            --set "$s" label.color=0xffeceff4 \
+            --set "$s" background.color=0xff57627A  \
+            --set "$s" background.height=21 \
+            --set "$s" background.padding_left=7 \
+            --set "$s" click_script="/etc/profiles/per-user/kelevra/bin/kitty"
+        done
 
-        # SPACE 2: CODE ICON
-        sketchybar -m --add space code left \
-          --set code icon= \
-          --set code associated_space=2 \
-          --set code icon.padding_left=5 \
-          --set code icon.padding_right=5 \
-          --set code label.padding_right=0 \
-          --set code label.padding_left=0 \
-          --set code label.color=0xffeceff4 \
-          --set code background.color=0xff57627A  \
-          --set code background.height=21 \
-          --set code background.padding_left=7 \
-          --set code click_script="$HOME/.nix-profile/bin/wezterm" \
-
-        # SPACE 3: MUSIC ICON
-        #sketchybar -m --add space music left \
-        #  --set music icon= \
-        #  --set music icon.highlight_color=0xff8CABC8 \
-        #  --set music associated_display=1 \
-        #  --set music associated_space=5 \
-        #  --set music icon.padding_left=5 \
-        #  --set music icon.padding_right=5 \
-        #  --set music label.padding_right=0 \
-        #  --set music label.padding_left=0 \
-        #  --set music label.color=0xffeceff4 \
-        #  --set music background.color=0xff57627A  \
-        #  --set music background.height=21 \
-        #  --set music background.padding_left=7 \
-        #  --set music click_script="open -a Spotify.app" \
-
-        # SPOTIFY STATUS
-        # CURRENT SPOTIFY SONG
-        # Adding custom events which can listen on distributed notifications from other running processes
-        #sketchybar -m --add event spotify_change "com.spotify.client.PlaybackStateChanged" \
-        #  --add item spotify_indicator left \
-        #  --set spotify_indicator background.color=0xff57627A  \
-        #  --set spotify_indicator background.height=21 \
-        #  --set spotify_indicator background.padding_left=7 \
-        #  --set spotify_indicator script="${spotify-indicator-sh}/bin/spotify-indicator.sh" \
-        #  --set spotify_indicator click_script="osascript -e 'tell application \"Spotify\" to pause'" \
-        #  --subscribe spotify_indicator spotify_change \
+        # sketchybar -m --add space 1 left \
+        #   --set 1 icon=1\
+        #   --set 1 associated_space=1 \
+        #   --set 1 icon.padding_left=5 \
+        #   --set 1 icon.padding_right=5 \
+        #   --set 1 label.padding_right=0 \
+        #   --set 1 label.padding_left=0 \
+        #   --set 1 label.color=0xffeceff4 \
+        #   --set 1 background.color=0xff57627A  \
+        #   --set 1 background.height=21 \
+        #   --set 1 background.padding_left=7 \
+        #   --set 1 click_script="/etc/profiles/per-user/kelevra/bin/kitty" \
+        #
+        # sketchybar -m --add space 2 left \
+        #   --set 2 icon=2\
+        #   --set 2 associated_space=2 \
+        #   --set 2 icon.padding_left=5 \
+        #   --set 2 icon.padding_right=5 \
+        #   --set 2 label.padding_right=0 \
+        #   --set 2 label.padding_left=0 \
+        #   --set 2 label.color=0xffeceff4 \
+        #   --set 2 background.color=0xff57627A  \
+        #   --set 2 background.height=22 \
+        #   --set 2 background.padding_left=7 \
+        #   --set 2 click_script="/etc/profiles/per-user/kelevra/bin/kitty" \
+        #
+        # sketchybar -m --add space 3 left \
+        #   --set 3 icon=3\
+        #   --set 3 associated_space=3 \
+        #   --set 3 icon.padding_left=5 \
+        #   --set 3 icon.padding_right=5 \
+        #   --set 3 label.padding_right=0 \
+        #   --set 3 label.padding_left=0 \
+        #   --set 3 label.color=0xffeceff4 \
+        #   --set 3 background.color=0xff57627A  \
+        #   --set 3 background.height=23 \
+        #   --set 3 background.padding_left=7 \
+        #   --set 3 click_script="/etc/profiles/per-user/kelevra/bin/kitty" \
 
       ############## ITEM DEFAULTS ###############
         sketchybar -m --default \

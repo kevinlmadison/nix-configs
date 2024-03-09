@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: 
+{ config, pkgs, inputs, ... }: 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
 let
@@ -6,9 +6,10 @@ let
 in {
   imports = [
       ./tailscale.nix
-      ./yabai.nix
       ./sketchybar.nix
       ./pkgs.nix
+      # ./yabai.nix
+      # ./skhd.nix
   ];
 
   environment.systemPackages = with pkgs; [ 
@@ -17,6 +18,7 @@ in {
     fzf
     kitty
     clang
+    watch
   ];
 
   # https://github.com/nix-community/home-manager/issues/4026
@@ -26,7 +28,7 @@ in {
   };
 
   services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
+  nix.package = pkgs.nix;
 
   # Necessary for using flakes on this system.
   # nix.settings.experimental-features = "nix-command flakes";
