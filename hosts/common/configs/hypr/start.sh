@@ -4,7 +4,7 @@
 swww init &
 
 # setting wallpaper
-swww img ~/Wallpapers/Aurora.jpg &
+swww img ~/.config/hypr/wallpaper.png &
 
 nm-applet --indicator &
 
