@@ -11,6 +11,7 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";

@@ -54,6 +54,10 @@
     };
     darwinPackages = self.darwinConfigurations."m3".pkgs;
 
+    images = {
+      rpi = self.nixosConfigurations.rpi.config.system.build.sdImage;
+    };
+
     nixosConfigurations = {
       # nix build .#nixosConfigurations.rpi.config.system.build.sdImage
       "rpi" = nixpkgs.lib.nixosSystem {

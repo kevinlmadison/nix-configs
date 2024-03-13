@@ -34,7 +34,7 @@
     ripgrep.enable = true;
     bat.enable = true;
     autojump.enable = true;
-    jq.enable = true;
+    # jq.enable = true;
   };
 
   programs.git = {
@@ -70,6 +70,7 @@
     enable = true;
     enableAutosuggestions = true;
     autocd = true;
+    envExtra = "export TERM=ansi";
     history = {
       save = 10000;
       path = "/home/kelevra/.histfile";
