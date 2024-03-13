@@ -5,11 +5,11 @@ setup_config_dir() {
   local host=$(hostname)
 
   # Move raw configs from platform to .config dir
-  for dir in $(ls "$pwd"/hosts/"$host"/configs);
+  for dir in $(ls "$pwd"/hosts/common/configs);
   do
 
     dir_link=~/.config/"$dir"
-    dir_path="$pwd"/hosts/"$host"/configs/"$dir"
+    dir_path="$pwd"/hosts/common/configs/"$dir"
 
     # If we're in a fresh state, create a backup
     if [[   -d "$dir_link" &&
