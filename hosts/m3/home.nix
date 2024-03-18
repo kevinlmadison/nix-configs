@@ -1,11 +1,13 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, inputs, ... }: {
 
   imports =
     [ # Include the results of the hardware scan.
       ./zellij.nix
       ./starship.nix
-      ./neovim
+      # ./neovim
       ./nushell
+      # ./nixvim/config/default.nix
+      # inputs.nixvim.homeManagerModules.nixvim
     ];
 
   home.username = "kelevra";

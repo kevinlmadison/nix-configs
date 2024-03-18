@@ -4,8 +4,8 @@
   inputs = {
 
     # Nix Packages
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     
     # Home Manager
@@ -13,7 +13,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Hardware Modules
-    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     
     # Nix Darwin
@@ -22,7 +21,8 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Vim
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim.url = "github:nix-community/nixvim/9f7c78852f37126244b43e71e5158cdc3d70ad0a";
+    # nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
   };
@@ -47,6 +47,7 @@
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            # home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.kelevra = import ./hosts/m3/home.nix;
           }
         ];

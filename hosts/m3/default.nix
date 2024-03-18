@@ -8,12 +8,14 @@ in {
       ./tailscale.nix
       ./sketchybar.nix
       ./pkgs.nix
+      ./nixvim/config/default.nix
+      inputs.nixvim.nixDarwinModules.nixvim
       # ./yabai.nix
       # ./skhd.nix
   ];
 
   environment.systemPackages = with pkgs; [ 
-    neovim
+    # neovim
     git
     fzf
     kitty
