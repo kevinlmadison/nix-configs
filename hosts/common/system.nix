@@ -130,6 +130,7 @@
     zsh
     wezterm
     kitty
+    lm_sensors
     #clang
     #lsd
     #tmux
