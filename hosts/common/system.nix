@@ -176,7 +176,7 @@
   };
   ## Enable the OpenSSH daemon.
   programs.ssh.startAgent = true;
-  security.pam.enableSSHAgentAuth = true;
+  security.pam.sshAgentAuth.enable = true;
   services.openssh = {
     enable = true;
     ports = [ 22 ];

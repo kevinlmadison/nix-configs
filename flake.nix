@@ -13,7 +13,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Hardware Modules
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:kevinlmadison/nixos-hardware/master";
     
     # Nix Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
@@ -93,7 +94,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.kelevra = import ./home;
           }
-          #nixos-hardware.nixosModules.lenovo-thinkpad-x220
+          nixos-hardware.nixosModules.msi-b350-tomahawk
         ];
       };
 
