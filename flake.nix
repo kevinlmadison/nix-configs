@@ -107,6 +107,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.kelevra = import ./home;
           }
           nixos-hardware.nixosModules.lenovo-thinkpad-x220

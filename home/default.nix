@@ -6,7 +6,7 @@
     [ # Include the results of the hardware scan.
       ./tmux.nix
       ./zellij.nix
-      ./neovim
+      # ./neovim
       ./nushell
       ./starship.nix
       # ./wayland.nix
