@@ -4,10 +4,7 @@
     [ # Include the results of the hardware scan.
       ./zellij.nix
       ./starship.nix
-      # ./neovim
       ./nushell
-      # ./nixvim/config/default.nix
-      # inputs.nixvim.homeManagerModules.nixvim
     ];
 
   home.username = "kelevra";
@@ -58,6 +55,18 @@
     jq.enable = true;
     nix-index.enable = true;
     htop.enable = true;
+  };
+
+  programs.helix = {
+    enable = true;
+    defaultEditor = false;
+    settings = {
+      theme = "gruvbox";
+      editor.line-number = "relative";
+      editor.cursor-shape.insert = "bar";
+      editor.lsp.enable = true;
+      editor.lsp.display-messages = true;
+    };
   };
 
   programs.git = {

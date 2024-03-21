@@ -1,6 +1,7 @@
 {pkgs, ...}: {
 programs.nixvim = {
 
+  plugins.rust-tools.enable = true;
   plugins.lsp = {
     servers = {
       # bashls.enable = true;

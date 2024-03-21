@@ -11,6 +11,7 @@
     ./format.nix
     ./lint.nix
     ./debug.nix
+		./gitsigns.nix
   ];
 
   programs.nixvim = {
@@ -40,11 +41,12 @@
     };
 
     plugins = {
-      gitsigns.enable = true;
       oil.enable = true;
       undotree.enable = true;
       fugitive.enable = true;
       nvim-tree.enable = true;
+			comment-nvim.enable = true;
+			surround.enable = true;
       which-key = {
         enable = true;
         registrations = {

@@ -51,7 +51,7 @@ in {
       # "kidonng/malt"
       # "aaronraimist/homebrew-tap"
     ];
-    # casks = [
+    casks = [
     #   # "1password-beta"
     #   # "android-platform-tools"
     #   "blockblock"
@@ -65,7 +65,7 @@ in {
     #   "knockknock"
     #   "lulu"
     #   # "mullvad-browser"
-    #   "oversight"
+      # "oversight"
     #   "reikey"
     #   "rustdesk"
     #   "secretive"
@@ -73,7 +73,8 @@ in {
     #   "syncthing"
     #   # "tailscale"
     #   "kitty"
-    # ];
+    ];
+
     # masApps = {
     #   DaisyDisk = 411643860;
     #   "WiFi Explorer" = 494803304;
