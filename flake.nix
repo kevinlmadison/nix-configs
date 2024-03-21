@@ -48,8 +48,8 @@
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            # home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.kelevra = import ./hosts/m3/home.nix;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.kelevra = import ./home;
           }
         ];
       };
@@ -70,6 +70,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.kelevra = import ./home/rpi;
           }
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
@@ -92,6 +93,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.kelevra = import ./home;
           }
           nixos-hardware.nixosModules.msi-b350-tomahawk
@@ -123,6 +125,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.kelevra = import ./home;
           }
           #j-link.nixosModule

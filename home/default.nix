@@ -1,46 +1,12 @@
-{ config, pkgs, inputs, ... }: {
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-  imports =
-    [ # Include the results of the hardware scan.
-      ./tmux.nix
-      ./zellij.nix
-      # ./neovim
-      ./nushell
-      ./starship.nix
-      # ./wayland.nix
-      # ./waybar.nix
-			./nixvim
-			inputs.nixvim.homeManagerModules.nixvim
-    ];
-
-  home.username = "kelevra";
-  home.homeDirectory = "/home/kelevra";
-  home.shellAliases = {
-      l = "lsd -alF";
-      c = "cd";
-      e = "nvim";
-      gcm = "git commit -m";
-      se = "sudoedit";
-      conf = "sudoedit /etc/nixos/configuration.nix";
-      # update = "sudo nixos-rebuild switch";
-      update = "sudo nixos-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
-    };
-
-  home.packages = with pkgs; [
-    google-chrome
+{ config, pkgs, inputs, lib, ... }: 
+  let
+	default_pkgs = with pkgs; [
     cmatrix
-    mpd
     bat
-    btop
-    zlib
-    pypy3
     k9s
     git
-    arandr
     rustup
-    firefox
+    #firefox  # Not supported on aarch64-darwin
     font-awesome
     powerline-fonts
     powerline-symbols
@@ -61,8 +27,41 @@
     terraform
     ansible
   ];
+	
+	linux_pkgs = with pkgs; [ firefox ];
+	in
+{
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+  imports =
+    [ # Include the results of the hardware scan.
+      ./zellij.nix
+      ./nushell
+      ./starship.nix
+			./nixvim
+			inputs.nixvim.homeManagerModules.nixvim
+    ];
+
+  home.username = "kelevra";
+  home.homeDirectory = if pkgs.system == "aarch64-darwin" then  "/Users/kelevra" else "/home/kelevra";
+  home.shellAliases = {
+      l = "lsd -alF";
+      c = "cd";
+      e = "nvim";
+      gcm = "git commit -m";
+      se = "sudoedit";
+      conf = "sudoedit /etc/nixos/configuration.nix";
+      # update = "sudo nixos-rebuild switch";
+      update = if pkgs.system == "aarch64-darwin"
+        then "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure"
+			  else "sudo nixos-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
+    };
+
+  home.packages = if pkgs.system == "x86_64-linux" then linux_pkgs ++ default_pkgs else default_pkgs;
   fonts.fontconfig.enable = true;
 
+  programs.home-manager.enable = true;
   programs = {
     ripgrep.enable = true;
     bat.enable = true;
@@ -70,6 +69,18 @@
     jq.enable = true;
     nix-index.enable = true;
     htop.enable = true;
+  };
+
+  programs.helix = {
+    enable = true;
+    defaultEditor = false;
+    settings = {
+      theme = "gruvbox";
+      editor.line-number = "relative";
+      editor.cursor-shape.insert = "bar";
+      editor.lsp.enable = true;
+      editor.lsp.display-messages = true;
+    };
   };
 
   programs.git = {

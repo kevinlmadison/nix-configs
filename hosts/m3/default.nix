@@ -8,8 +8,8 @@ in {
       ./tailscale.nix
       ./sketchybar.nix
       ./pkgs.nix
-      ./nixvim
-      inputs.nixvim.nixDarwinModules.nixvim
+      # ./nixvim
+      # inputs.nixvim.nixDarwinModules.nixvim
       # ./yabai.nix
       # ./skhd.nix
   ];
