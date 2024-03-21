@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -11,6 +11,8 @@
       ./starship.nix
       # ./wayland.nix
       # ./waybar.nix
+			./nixvim
+			inputs.nixvim.homeManagerModules.nixvim
     ];
 
   home.username = "kelevra";
