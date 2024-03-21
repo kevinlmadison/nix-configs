@@ -38,6 +38,7 @@
       updatetime = 50;
       foldlevelstart = 99;
       clipboard = "unnamedplus";
+			breakindent = true;
     };
 
     plugins = {
@@ -45,6 +46,7 @@
       undotree.enable = true;
       fugitive.enable = true;
       nvim-tree.enable = true;
+			indent-blankline.enable = true;
 			comment-nvim.enable = true;
 			surround.enable = true;
       which-key = {
