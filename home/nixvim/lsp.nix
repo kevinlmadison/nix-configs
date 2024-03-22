@@ -4,16 +4,18 @@ programs.nixvim = {
   plugins.rust-tools.enable = true;
   plugins.lsp = {
     servers = {
-      # bashls.enable = true;
+			ansiblels.enable = true;
+      bashls.enable = true;
       clangd.enable = true;
       cmake.enable = true;
-      cssls.enable = true;
-      gopls.enable = true;
-      html.enable = true;
+			helm-ls.enable = true;
       jsonls.enable = true;
-      lua-ls.enable = true;
+      lua-ls = {
+			  enable = true;
+				settings.telemetry.enable = false;
+			};
       nixd.enable = true;
-      prismals.enable = true;
+			nil_ls.enable = true;
       ruff-lsp.enable = true;
       rust-analyzer = {
         enable = true;
@@ -117,27 +119,6 @@ programs.nixvim = {
       	end,
       })
 
-      -- CSS LSP
-      require("lspconfig").cssls.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
-
-      -- golang lsp
-      require("lspconfig").gopls.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
-
-      -- HTML lsp
-      require("lspconfig").html.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
-
       -- JSON lsp
       require("lspconfig").jsonls.setup({
       	on_attach = function()
@@ -160,18 +141,18 @@ programs.nixvim = {
       })
 
       -- Nix LSP
-      require("lspconfig").nixd.setup({
+      require("lspconfig").nil_ls.setup({
       	on_attach = function()
       		set_cmn_lsp_keybinds()
       	end,
       })
 
-      -- Prisma LSP
-      require("lspconfig").prismals.setup({
-      	on_attach = function()
-      		set_cmn_lsp_keybinds()
-      	end,
-      })
+      -- Nix LSP
+      -- require("lspconfig").nixd.setup({
+      -- 	on_attach = function()
+      -- 		set_cmn_lsp_keybinds()
+      -- 	end,
+      -- })
 
       -- Python LSP
       require("lspconfig").ruff_lsp.setup({

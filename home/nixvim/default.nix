@@ -16,6 +16,8 @@
 
   programs.nixvim = {
     enable = true;
+    viAlias = true;
+    vimAlias = true;
     globals = {
       mapleader = " ";
     };
@@ -39,16 +41,38 @@
       foldlevelstart = 99;
       clipboard = "unnamedplus";
 			breakindent = true;
+			completeopt = "menu,menuone,noselect";
+    };
+
+    highlight = {
+      Comment.fg = "#ff00ff";
+      Comment.bg = "#000000";
+      Comment.underline = true;
+      Comment.bold = true;
     };
 
     plugins = {
+			cursorline = {
+				enable = true;
+				cursorline = {
+				  enable = true;
+					timeout = 0;
+					number = true;
+				};
+			};
       oil.enable = true;
       undotree.enable = true;
       fugitive.enable = true;
       nvim-tree.enable = true;
 			indent-blankline.enable = true;
+      friendly-snippets.enable = true;
 			comment-nvim.enable = true;
 			surround.enable = true;
+      navic.enable = true;
+			# mini.modules.pairs = {};
+      nvim-autopairs.enable = true;
+      nvim-autopairs.checkTs = true;
+      ts-context-commentstring.enable = true;
       which-key = {
         enable = true;
         registrations = {
@@ -115,6 +139,7 @@
       pylint
       ruff
       shellcheck
+			nil
       # vale
       yamllint
       # Debuggers / misc deps
@@ -127,7 +152,7 @@
       # go
       # lldb_17
       # llvmPackages_17.bintools-unwrapped
-      # marksman
+      marksman
 
     (nerdfonts.override {
       fonts = [

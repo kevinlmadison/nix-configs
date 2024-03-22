@@ -77,8 +77,14 @@ programs.nixvim = {
     cmp_luasnip.enable = true;
   };
   extraConfigLua = ''
+	  local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
     -- Extra options for cmp-cmdline setup
     local cmp = require("cmp")
+		cmp.event:on(
+			'confirm_done',
+			cmp_autopairs.on_confirm_done()
+		)
     cmp.setup.cmdline(":", {
     	mapping = cmp.mapping.preset.cmdline(),
     	sources = cmp.config.sources({

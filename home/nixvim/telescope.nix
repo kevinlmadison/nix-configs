@@ -3,6 +3,10 @@ programs.nixvim = {
 
   plugins.telescope = {
     enable = true;
+		extensions = {
+			file_browser.enable = true;
+			fzf-native.enable = true;
+		};
     keymaps = {
       "<leader>?" = {
         action = "oldfiles";
