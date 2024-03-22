@@ -3,10 +3,12 @@
   services.jellyfin = {
     enable = true;
     openFirewall = true;
+    user = "kelevra";
   };
-  environment.systemPackages = [
-    pkgs.jellyfin
-    pkgs.jellyfin-web
-    pkgs.jellyfin-ffmpeg
+  environment.systemPackages = with pkgs; [
+    jellyfin
+    jellyfin-web
+    jellyfin-ffmpeg
+    transmission-gtk
   ];
 }
