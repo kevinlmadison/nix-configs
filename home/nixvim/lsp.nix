@@ -250,11 +250,6 @@ programs.nixvim = {
       		set_cmn_lsp_keybinds()
       	end,
       })
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities.textDocument.foldingRange = {
-					dynamicRegistration = false,
-					lineFoldingOnly = true
-			}
 
       -- Zig LSP
       require("lspconfig").zls.setup({
