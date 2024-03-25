@@ -76,7 +76,13 @@ programs.nixvim = {
     luasnip.enable = true;
     cmp_luasnip.enable = true;
   };
+  extraConfigLuaPre = ''
+	  local luasnip = require("luasnip")
+		luasnip.config.setup({})
+  '';
   extraConfigLua = ''
+	  local luasnip = require("luasnip")
+		luasnip.config.setup({})
 	  local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
     -- Extra options for cmp-cmdline setup

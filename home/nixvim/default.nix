@@ -113,17 +113,18 @@
     };
     extraPackages = with pkgs; [
       # Formatters
-      # alejandra
+      alejandra
       # asmfmt
       # astyle
+			ansible-language-server
       black
       cmake-format
       # gofumpt
       # golines
       # gotools
       isort
-      # nodePackages.prettier
-      # prettierd
+      nodePackages.prettier
+      prettierd
       rustfmt
       shfmt
       stylua

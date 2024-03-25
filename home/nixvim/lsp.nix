@@ -4,7 +4,10 @@ programs.nixvim = {
   plugins.rust-tools.enable = true;
   plugins.lsp = {
     servers = {
-			ansiblels.enable = true;
+			ansiblels = { 
+			  enable = true;
+				filetypes = [ "*.yaml" "*.yml" ];
+			};
       bashls.enable = true;
       clangd.enable = true;
       cmake.enable = true;
@@ -105,6 +108,13 @@ programs.nixvim = {
      capabilities.textDocument.completion.completionItem.snippetSupport = true
 
      -- Individual LSP configs
+      -- clang LSP
+      require("lspconfig").ansiblels.setup({
+      	on_attach = function()
+      		set_cmn_lsp_keybinds()
+      	end,
+      })
+			
       -- clang LSP
       require("lspconfig").clangd.setup({
       	on_attach = function()

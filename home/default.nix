@@ -26,6 +26,8 @@
     helmfile
     terraform
     ansible
+		zoom-us
+		slack
   ];
 	
 	linux_pkgs = with pkgs; [ firefox ];
