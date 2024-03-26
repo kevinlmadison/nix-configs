@@ -1,6 +1,11 @@
-{ config, pkgs, inputs, lib, ... }: 
-  let
-	default_pkgs = with pkgs; [
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: let
+  default_pkgs = with pkgs; [
     cmatrix
     bat
     k9s
@@ -12,7 +17,7 @@
     powerline-symbols
     nerdfonts
     sd
-    (python3.withPackages(ps: with ps; [ pypy python-lsp-server python-lsp-ruff]))
+    (python3.withPackages (ps: with ps; [pypy python-lsp-server python-lsp-ruff]))
     nil
     clang
     clang-tools
@@ -26,41 +31,47 @@
     helmfile
     terraform
     ansible
-		zoom-us
-		slack
+    zoom-us
+    slack
   ];
-	
-	linux_pkgs = with pkgs; [ firefox ];
-	in
-{
+
+  linux_pkgs = with pkgs; [firefox];
+in {
   nixpkgs.config = {
     allowUnfree = true;
   };
-  imports =
-    [ # Include the results of the hardware scan.
-      ./zellij.nix
-      ./nushell
-      ./starship.nix
-			./nixvim
-			inputs.nixvim.homeManagerModules.nixvim
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./zellij.nix
+    ./nushell
+    ./starship.nix
+    # ./nixvim
+    # inputs.nixvim.homeManagerModules.nixvim
+  ];
 
   home.username = "kelevra";
-  home.homeDirectory = if pkgs.system == "aarch64-darwin" then  "/Users/kelevra" else "/home/kelevra";
+  home.homeDirectory =
+    if pkgs.system == "aarch64-darwin"
+    then "/Users/kelevra"
+    else "/home/kelevra";
   home.shellAliases = {
-      l = "lsd -alF";
-      c = "cd";
-      e = "nvim";
-      gcm = "git commit -m";
-      se = "sudoedit";
-      conf = "sudoedit /etc/nixos/configuration.nix";
-      # update = "sudo nixos-rebuild switch";
-      update = if pkgs.system == "aarch64-darwin"
-        then "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure"
-			  else "sudo nixos-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
-    };
+    l = "lsd -alF";
+    c = "cd";
+    e = "nvim";
+    gcm = "git commit -m";
+    se = "sudoedit";
+    conf = "sudoedit /etc/nixos/configuration.nix";
+    # update = "sudo nixos-rebuild switch";
+    update =
+      if pkgs.system == "aarch64-darwin"
+      then "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure"
+      else "sudo nixos-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
+  };
 
-  home.packages = if pkgs.system == "x86_64-linux" then linux_pkgs ++ default_pkgs else default_pkgs;
+  home.packages =
+    if pkgs.system == "x86_64-linux"
+    then linux_pkgs ++ default_pkgs
+    else default_pkgs;
   fonts.fontconfig.enable = true;
 
   programs.home-manager.enable = true;
@@ -113,11 +124,11 @@
         size = 8;
         normal = {
           family = "GohuFont";
-          style  = "Regular";
+          style = "Regular";
         };
         bold = {
           family = "GohuFont";
-          style  = "Bold";
+          style = "Bold";
         };
       };
 
@@ -155,7 +166,7 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = ["z" "git" "sudo" "docker" "kubectl" ];
+      plugins = ["z" "git" "sudo" "docker" "kubectl"];
       theme = "robbyrussell";
     };
   };

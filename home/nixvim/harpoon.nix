@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
 programs.nixvim = {
 
   plugins.harpoon.enable = true; # The name, is the harpoon-maker-agen
