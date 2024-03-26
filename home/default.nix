@@ -61,7 +61,6 @@ in {
     gcm = "git commit -m";
     se = "sudoedit";
     conf = "sudoedit /etc/nixos/configuration.nix";
-    # update = "sudo nixos-rebuild switch";
     update =
       if pkgs.system == "aarch64-darwin"
       then "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure"
@@ -162,7 +161,10 @@ in {
     autocd = true;
     history = {
       save = 10000;
-      path = "/home/kelevra/.histfile";
+      path =
+        if pkgs.system == "aarch64-darwin"
+        then "/Users/kelevra/.histfile"
+        else "/home/kelevra/.histfile";
     };
     oh-my-zsh = {
       enable = true;
