@@ -11,8 +11,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Hardware Modules
-    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-hardware.url = "github:kevinlmadison/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # nixos-hardware.url = "github:kevinlmadison/nixos-hardware/master";
 
     # Nix Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
@@ -21,7 +21,6 @@
 
     # Nix Vim
     nixvim.url = "github:nix-community/nixvim/9f7c78852f37126244b43e71e5158cdc3d70ad0a";
-    # nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-flake.url = "github:kevinlmadison/neovim-flake";
