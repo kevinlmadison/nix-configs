@@ -38,16 +38,11 @@
     ...
   } @ inputs: {
     darwinConfigurations = {
-      "m3" = nix-darwin.lib.darwinSystem rec {
+      "m3" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/m3/default.nix
-          {
-            environment.systemPackages = [
-              neovim-flake.packages.${system}.default
-            ];
-          }
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -66,15 +61,10 @@
 
     nixosConfigurations = {
       # nix build .#nixosConfigurations.rpi.config.system.build.sdImage
-      "rpi" = nixpkgs.lib.nixosSystem rec {
+      "rpi" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
           ./hosts/rpi
-          {
-            environment.systemPackages = [
-              neovim-flake.packages.${system}.default
-            ];
-          }
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -93,16 +83,11 @@
         ];
       };
 
-      "vader" = nixpkgs.lib.nixosSystem rec {
+      "vader" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
           ./hosts/vader/default.nix
-          {
-            environment.systemPackages = [
-              neovim-flake.packages.${system}.default
-            ];
-          }
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -114,16 +99,11 @@
         ];
       };
 
-      "thinkpad" = nixpkgs.lib.nixosSystem rec {
+      "thinkpad" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
           ./hosts/thinkpad/default.nix
-          {
-            environment.systemPackages = [
-              neovim-flake.packages.${system}.default
-            ];
-          }
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -135,16 +115,11 @@
         ];
       };
 
-      "xps" = nixpkgs.lib.nixosSystem rec {
+      "xps" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
           ./hosts/xps/default.nix
-          {
-            environment.systemPackages = [
-              neovim-flake.packages.${system}.default
-            ];
-          }
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

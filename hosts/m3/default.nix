@@ -1,20 +1,25 @@
-{ config, pkgs, inputs, ... }: 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+# List packages installed in system profile. To search by name, run:
+# $ nix-env -qaP | grep wget
 let
   system = pkgs.system;
 in {
   imports = [
-      ./tailscale.nix
-      ./sketchybar.nix
-      ./pkgs.nix
-      # ./nixvim
-      # inputs.nixvim.nixDarwinModules.nixvim
-      # ./yabai.nix
-      # ./skhd.nix
+    ./tailscale.nix
+    ./sketchybar.nix
+    ./pkgs.nix
+    # ./nixvim
+    # inputs.nixvim.nixDarwinModules.nixvim
+    # ./yabai.nix
+    # ./skhd.nix
   ];
 
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     # neovim
     git
     fzf
@@ -38,7 +43,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;  # default shell on catalina
+  programs.zsh.enable = true; # default shell on catalina
   # programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
@@ -76,7 +81,7 @@ in {
 
   # add nerd fonts
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" "Iosevka" ]; })
+    (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "Iosevka"];})
   ];
 
   #system-defaults.nix
@@ -146,7 +151,7 @@ in {
       };
     };
   };
-   # Add flake support
+  # Add flake support
   # nix.extraOptions = ''
   #   experimental-features = nix-command flakes
   # '';

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   system = pkgs.system;
   # linuxBuilderSsh = pkgs.writeShellScriptBin "linux-builder-ssh" ''
   #   sudo ssh -i /etc/nix/builder_ed25519 builder@linux-builder
@@ -30,12 +32,12 @@ in {
     brews = [
       "yabai"
       "skhd"
-    #   "bash"
-    #   "choose-gui"
-    #   "cliclick"
-    #   "pinentry-mac"
-    #   "watch"
-    #   "zsh"
+      #   "bash"
+      #   "choose-gui"
+      #   "cliclick"
+      #   "pinentry-mac"
+      #   "watch"
+      #   "zsh"
     ];
     extraConfig = ''
       cask_args appdir: "~/Applications"
@@ -52,27 +54,29 @@ in {
       # "aaronraimist/homebrew-tap"
     ];
     casks = [
-    #   # "1password-beta"
-    #   # "android-platform-tools"
-    #   "blockblock"
-    #   "cursorcerer"
-    #   "font-droid-sans-mono-for-powerline"
-    #   "font-iosevka-nerd-font"
-    #   "font-jetbrains-mono-nerd-font"
-    #   "font-microsoft-office"
-    #   "hiddenbar"
-    #   # "iterm2"
-    #   "knockknock"
-    #   "lulu"
-    #   # "mullvad-browser"
+      "slack"
+      "zoom"
+      #   # "1password-beta"
+      #   # "android-platform-tools"
+      #   "blockblock"
+      #   "cursorcerer"
+      #   "font-droid-sans-mono-for-powerline"
+      #   "font-iosevka-nerd-font"
+      #   "font-jetbrains-mono-nerd-font"
+      #   "font-microsoft-office"
+      #   "hiddenbar"
+      #   # "iterm2"
+      #   "knockknock"
+      #   "lulu"
+      #   # "mullvad-browser"
       # "oversight"
-    #   "reikey"
-    #   "rustdesk"
-    #   "secretive"
-    #   "shortcat"
-    #   "syncthing"
-    #   # "tailscale"
-    #   "kitty"
+      #   "reikey"
+      #   "rustdesk"
+      #   "secretive"
+      #   "shortcat"
+      #   "syncthing"
+      #   # "tailscale"
+      #   "kitty"
     ];
 
     # masApps = {

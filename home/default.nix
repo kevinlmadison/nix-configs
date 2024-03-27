@@ -33,6 +33,7 @@
     ansible
     zoom-us
     slack
+    inputs.neovim-flake.packages.${pkgs.system}.default
   ];
 
   linux_pkgs = with pkgs; [firefox];
