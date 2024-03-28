@@ -1,19 +1,57 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, GohuFont, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 12px;
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: FontAwesome, "GohuFont 11 Nerd Font", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 11px;
 }
+@define-color base_t            rgba(25, 23, 36, 0.5);
+@define-color surface_t         rgba(31, 29, 46, 0.5);
+@define-color overlay_t         rgba(38, 35, 58, 0.5);
+
+@define-color muted_t           rgba(110, 106, 134, 0.5);
+@define-color subtle_t          rgba(144, 140, 170, 0.5);
+@define-color text_t            rgba(224, 222, 244, 0.5);
+
+@define-color love_t            rgba(235, 111, 146, 0.5);
+@define-color gold_t            rgba(246, 193, 119, 0.5);
+@define-color rose_t            rgba(235, 188, 186, 0.5);
+@define-color pine_t            rgba(49, 116, 143, 0.5);
+@define-color foam_t            rgba(156, 207, 216, 0.5);
+@define-color iris_t            rgba(196, 167, 231, 0.5);
+
+@define-color highlightLow_t    rgba(33, 32, 46, 0.5);
+@define-color highlightMed_t    rgba(64, 61, 82, 0.5);
+@define-color highlightHigh_t   rgba(82, 79, 103, 0.5);
+
+@define-color base            rgba(25, 23, 36, 1.0);
+@define-color surface         rgba(31, 29, 46, 1.0);
+@define-color overlay         rgba(38, 35, 58, 1.0);
+
+@define-color muted           rgba(110, 106, 134, 1.0);
+@define-color subtle          rgba(144, 140, 170, 1.0);
+@define-color text            rgba(224, 222, 244, 1.0);
+
+@define-color love            rgba(235, 111, 146, 1.0);
+@define-color gold            rgba(246, 193, 119, 1.0);
+@define-color rose            rgba(235, 188, 186, 1.0);
+@define-color pine            rgba(49, 116, 143, 1.0);
+@define-color foam            rgba(156, 207, 216, 1.0);
+@define-color iris            rgba(196, 167, 231, 1.0);
+
+@define-color highlightLow    rgba(33, 32, 46, 1.0);
+@define-color highlightMed    rgba(64, 61, 82, 1.0);
+@define-color highlightHigh   rgba(82, 79, 103, 1.0);
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 0px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+  background-color: @base_t;
+  border-bottom: 0px solid rgba(100, 114, 125, 0.5);
+  color: @base;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 /*
@@ -26,50 +64,56 @@ window#waybar.solo {
 */
 
 window#waybar.termite {
-    background-color: #3F3F3F;
+  background-color: #3f3f3f;
 }
 
 window#waybar.chromium {
-    background-color: #000000;
-    border: none;
+  background-color: #000000;
+  border: none;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+  background: inherit;
+  box-shadow: inset 0 -3px @gold;
+  /* box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
+  padding: 0 5px;
+  font-size: 19px;
+  background-color: transparent;
+  color: @gold;
+  /* color: #ffffff; */
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #workspaces button.active {
-    background-color: transparent;
-    box-shadow: inset 0 -3px #ffffff;
+  background-color: @gold_t;
+  /* background-color: transparent; */
+  box-shadow: inset 0 -3px @gold;
+  /* box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+  background-color: @rose_t;
 }
 
 #mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+  background-color: @foam_t;
+  /* background-color: #64727d; */
+  border-bottom: 3px solid #ffffff;
 }
 
 #clock,
@@ -88,214 +132,215 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #mpd {
-    padding: 0 10px;
-    color: #ffffff;
+  padding: 0 12px;
+  color: @gold;
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 #clock {
-    background-color: #64727D;
+  background-color: @overlay_t;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+  background-color: @overlay_t;
+  color: @gold;
 }
 
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+#battery.charging,
+#battery.plugged {
+  color: @gold;
+  background-color: @overlay_t;
 }
 
 @keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+  to {
+    background-color: @rose_t;
+    color: @base_t;
+  }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  background-color: @rose_t;
+  color: @pine;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 label:focus {
-    background-color: #000000;
+  background-color: @overlay_t;
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+  background-color: @overlay_t;
+  color: @gold;
 }
 
 #memory {
-    background-color: #9b59b6;
+  background-color: @overlay_t;
 }
 
 #disk {
-    background-color: #964B00;
+  background-color: @overlay_t;
 }
 
 #backlight {
-    background-color: #90b1b1;
+  background-color: @overlay_t;
 }
 
 #network {
-    background-color: #2980b9;
+  background-color: @overlay_t;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+  background-color: @overlay_t;
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+  background-color: @overlay_t;
+  color: @gold;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+  background-color: @overlay_t;
+  color: @gold;
 }
 
 #wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
+  background-color: @gold_t;
+  color: @base;
 }
 
 #wireplumber.muted {
-    background-color: #f53c3c;
+  background-color: @gold_t;
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
+  background-color: @gold_t;
+  color: #2a5c45;
+  min-width: 100px;
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
+  background-color: @overlay_t;
 }
 
 #custom-media.custom-vlc {
-    background-color: #ffa000;
+  background-color: @overlay_t;
 }
 
 #temperature {
-    background-color: #f0932b;
+  background-color: @overlay_t;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+  background-color: @rose_t;
 }
 
 #tray {
-    background-color: #2980b9;
+  background-color: @overlay_t;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+  -gtk-icon-effect: highlight;
+  background-color: @overlay_t;
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+  background-color: @overlay_t;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+  background-color: @overlay_t;
+  color: @gold;
 }
 
 #mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
+  background-color: @overlay_t;
+  color: #2a5c45;
 }
 
 #mpd.disconnected {
-    background-color: #f53c3c;
+  background-color: @overlay_t;
 }
 
 #mpd.stopped {
-    background-color: #90b1b1;
+  background-color: @overlay_t;
 }
 
 #mpd.paused {
-    background-color: #51a37a;
+  background-color: @overlay_t;
 }
 
 #language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
+  background: @overlay_t;
+  color: @gold;
+  padding: 0 5px;
+  margin: 0 5px;
+  min-width: 16px;
 }
 
 #keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
+  background: @overlay_t;
+  color: @gold;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
 }
 
 #keyboard-state > label {
-    padding: 0 5px;
+  padding: 0 5px;
 }
 
 #keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 #privacy {
-    padding: 0;
+  padding: 0;
 }
 
 #privacy-item {
-    padding: 0 5px;
-    color: white;
+  padding: 0 5px;
+  color: white;
 }
 
 #privacy-item.screenshare {
-    background-color: #cf5700;
+  background-color: @overlay_t;
 }
 
 #privacy-item.audio-in {
-    background-color: #1ca000;
+  background-color: @overlay_t;
 }
 
 #privacy-item.audio-out {
-    background-color: #0069d4;
+  background-color: @overlay_t;
 }

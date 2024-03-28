@@ -5,7 +5,10 @@
     font = {
       package = pkgs.gohufont;
       name = "GohuFont 14 Nerd Font";
-      size = 14;
+      size =
+        if pkgs.system == "aarch64-darwin"
+        then 14
+        else 10;
     };
     settings = {
       background_opacity = "0.93";
