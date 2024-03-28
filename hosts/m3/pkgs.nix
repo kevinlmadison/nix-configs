@@ -56,6 +56,7 @@ in {
     casks = [
       "slack"
       "zoom"
+      "firefox"
       #   # "1password-beta"
       #   # "android-platform-tools"
       #   "blockblock"

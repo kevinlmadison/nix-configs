@@ -1,13 +1,17 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   space-sh = pkgs.writeShellScriptBin "space.sh" ''
-    if [ "$SELECTED" = "true" ]
-    then
-      sketchybar -m --set $NAME background.color=0xff81a1c1
-    else
-      sketchybar -m --set $NAME background.color=0xff57627A
-    fi
+     if [ "$SELECTED" = "true" ]
+     then
+       sketchybar -m --set $NAME background.color=0xffeb6f92
+    sketchybar -m --set $NAME icon.color=0xfff6c177
+     else
+       sketchybar -m --set $NAME background.color=0xff393552
+    sketchybar -m --set $NAME icon.color=0xff9ccfd8
+     fi
   '';
   window-title-sh = pkgs.writeShellScriptBin "window_title.sh" ''
     WINDOW_TITLE=$(yabai -m query --windows --window | ${pkgs.jq}/bin/jq -r '.app')
@@ -57,17 +61,17 @@ let
     charging=$(echo $data | grep 'AC Power')
 
     case "$battery_percent" in
-        100)    icon="󰁹" color=0xFFFFFFFF ;;
-        9[0-9]) icon="󰂂" color=0xFFFFFFFF ;;
-        8[0-9]) icon="󰂁" color=0xFFFFFFFF ;;
-        7[0-9]) icon="󰂀" color=0xFFFFFFFF ;;
-        6[0-9]) icon="󰁿" color=0xFFFFFFFF ;;
-        5[0-9]) icon="󰁾" color=0xFFFFFFFF ;;
-        4[0-9]) icon="󰁽" color=0xFFFFFFFF ;;
-        3[0-9]) icon="󰁼" color=0xFFFFFFFF ;;
-        2[0-9]) icon="󰁻" color=0xFFFFFFFF ;;
-        1[0-9]) icon="󰁺" color=0xFFFFFFFF ;;
-        *)      icon="󰂃" color=0xFFFFFFFF ;;
+        100)    icon="󰁹" color=0xfff6c177 ;;
+        9[0-9]) icon="󰂂" color=0xfff6c177 ;;
+        8[0-9]) icon="󰂁" color=0xfff6c177 ;;
+        7[0-9]) icon="󰂀" color=0xfff6c177 ;;
+        6[0-9]) icon="󰁿" color=0xfff6c177 ;;
+        5[0-9]) icon="󰁾" color=0xfff6c177 ;;
+        4[0-9]) icon="󰁽" color=0xfff6c177 ;;
+        3[0-9]) icon="󰁼" color=0xfff6c177 ;;
+        2[0-9]) icon="󰁻" color=0xfff6c177 ;;
+        1[0-9]) icon="󰁺" color=0xfff6c177 ;;
+        *)      icon="󰂃" color=0xfff6c177 ;;
     esac
 
     # if is charging
@@ -127,9 +131,14 @@ in {
     enable = true;
     extraPackages = with pkgs; [
       jetbrains-mono
+      gohufont
+      hack-font
     ];
     config = ''
       #!/usr/bin/env bash
+
+      foam = 0xff9ccfd8
+      gold = "0xfff6c177"
 
       ############## BAR ##############
         sketchybar -m --bar \
@@ -137,7 +146,7 @@ in {
           position=top \
           padding_left=5 \
           padding_right=5 \
-          color=0xff3b4252 \
+          color=0xff191724 \
           shadow=off \
           sticky=on \
           topmost=off
@@ -148,10 +157,14 @@ in {
           drawing=on \
           cache_scripts=on \
           icon.font="JetBrainsMono Nerd Font Mono:Bold:18.0" \
-          icon.color=0xffffffff \
-          label.font="JetBrainsMono Nerd Font Mono:Bold:12.0" \
-          label.color=0xffeceff4 \
+          icon.color=0xfff6c177\
+          label.font.family="GohuFont 14 Nerd Font" \
+          label.font.style="Bold" \
+          label.font.size=12.0\
+          label.color=0xff9ccfd8\
           label.highlight_color=0xff8CABC8
+          icon.highlight_color=0xffb4637a
+          background.highlight_color=0xffeb6f92
 
       ############## SPACE DEFAULTS ##############
         sketchybar -m --default \
@@ -166,62 +179,27 @@ in {
           --set apple icon= \
           --set apple icon.font="JetBrainsMono Nerd Font Mono:Regular:20.0" \
           --set apple label.padding_right=0 \
+          --set apple icon.color=0xff9ccfd8\
 
         # SPACES: NUMBERS
         for s in "1" "2" "3" "4" "5" "6" "7" "8" "9" "0";
-        do 
+        do
           sketchybar -m --add space "$s" left \
             --set "$s" icon="$s"\
             --set "$s" associated_space="$s" \
             --set "$s" icon.padding_left=5 \
             --set "$s" icon.padding_right=5 \
+            --set "$s" icon.font="Hack Nerd Font:Regular:14.0" \
+            --set "$s" icon.color=0xff9ccfd8\
             --set "$s" label.padding_right=0 \
             --set "$s" label.padding_left=0 \
-            --set "$s" label.color=0xffeceff4 \
-            --set "$s" background.color=0xff57627A  \
-            --set "$s" background.height=21 \
+            --set "$s" label.color=0xffea9a97 \
+            --set "$s" background.color=0xff393552\
+            --set "$s" background.height=19 \
             --set "$s" background.padding_left=7 \
+            --set "$s" script="${space-sh}/bin/space.sh"\
             --set "$s" click_script="/etc/profiles/per-user/kelevra/bin/kitty"
         done
-
-        # sketchybar -m --add space 1 left \
-        #   --set 1 icon=1\
-        #   --set 1 associated_space=1 \
-        #   --set 1 icon.padding_left=5 \
-        #   --set 1 icon.padding_right=5 \
-        #   --set 1 label.padding_right=0 \
-        #   --set 1 label.padding_left=0 \
-        #   --set 1 label.color=0xffeceff4 \
-        #   --set 1 background.color=0xff57627A  \
-        #   --set 1 background.height=21 \
-        #   --set 1 background.padding_left=7 \
-        #   --set 1 click_script="/etc/profiles/per-user/kelevra/bin/kitty" \
-        #
-        # sketchybar -m --add space 2 left \
-        #   --set 2 icon=2\
-        #   --set 2 associated_space=2 \
-        #   --set 2 icon.padding_left=5 \
-        #   --set 2 icon.padding_right=5 \
-        #   --set 2 label.padding_right=0 \
-        #   --set 2 label.padding_left=0 \
-        #   --set 2 label.color=0xffeceff4 \
-        #   --set 2 background.color=0xff57627A  \
-        #   --set 2 background.height=22 \
-        #   --set 2 background.padding_left=7 \
-        #   --set 2 click_script="/etc/profiles/per-user/kelevra/bin/kitty" \
-        #
-        # sketchybar -m --add space 3 left \
-        #   --set 3 icon=3\
-        #   --set 3 associated_space=3 \
-        #   --set 3 icon.padding_left=5 \
-        #   --set 3 icon.padding_right=5 \
-        #   --set 3 label.padding_right=0 \
-        #   --set 3 label.padding_left=0 \
-        #   --set 3 label.color=0xffeceff4 \
-        #   --set 3 background.color=0xff57627A  \
-        #   --set 3 background.height=23 \
-        #   --set 3 background.padding_left=7 \
-        #   --set 3 click_script="/etc/profiles/per-user/kelevra/bin/kitty" \
 
       ############## ITEM DEFAULTS ###############
         sketchybar -m --default \
@@ -238,10 +216,11 @@ in {
           --set date_time icon.padding_right=0 \
           --set date_time label.padding_right=9 \
           --set date_time label.padding_left=6 \
-          --set date_time label.color=0xffeceff4 \
+          --set date_time label.color=0xff9ccfd8 \
+          label.color=0xff9ccfd8\
           --set date_time update_freq=20 \
-          --set date_time background.color=0xff57627A \
-          --set date_time background.height=21 \
+          --set date_time background.color=0xff393552\
+          --set date_time background.height=19 \
           --set date_time background.padding_right=12 \
           --set date_time script="${date-time-sh}/bin/date-time.sh" \
 
@@ -252,9 +231,9 @@ in {
           --set battery icon.padding_right=8 \
           --set battery label.padding_right=8 \
           --set battery label.padding_left=0 \
-          --set battery label.color=0xffffffff \
-          --set battery background.color=0xff57627A  \
-          --set battery background.height=21 \
+          --set battery label.color=0xff9ccfd8 \
+          --set battery background.color=0xff393552\
+          --set battery background.height=19 \
           --set battery background.padding_right=7 \
           --set battery update_freq=10 \
           --set battery script="${battery-sh}/bin/battery.sh" \
@@ -266,9 +245,9 @@ in {
           --set topmem icon.padding_right=0 \
           --set topmem label.padding_right=8 \
           --set topmem label.padding_left=6 \
-          --set topmem label.color=0xffeceff4 \
-          --set topmem background.color=0xff57627A  \
-          --set topmem background.height=21 \
+          --set topmem label.color=0xff9ccfd8 \
+          --set topmem background.color=0xff393552\
+          --set topmem background.height=19 \
           --set topmem background.padding_right=7 \
           --set topmem update_freq=2 \
           --set topmem script="${top-mem-sh}/bin/top-mem.sh" \
@@ -280,9 +259,9 @@ in {
           --set cpu_percent icon.padding_right=0 \
           --set cpu_percent label.padding_right=8 \
           --set cpu_percent label.padding_left=6 \
-          --set cpu_percent label.color=0xffeceff4 \
-          --set cpu_percent background.color=0xff57627A  \
-          --set cpu_percent background.height=21 \
+          --set cpu_percent label.color=0xff9ccfd8 \
+          --set cpu_percent background.color=0xff393552\
+          --set cpu_percent background.height=19 \
           --set cpu_percent background.padding_right=7 \
           --set cpu_percent update_freq=2 \
           --set cpu_percent script="${cpu-sh}/bin/cpu.sh" \
@@ -293,9 +272,9 @@ in {
           --set caffeine icon.padding_right=0 \
           --set caffeine label.padding_right=0 \
           --set caffeine label.padding_left=6 \
-          --set caffeine label.color=0xffeceff4 \
-          --set caffeine background.color=0xff57627A  \
-          --set caffeine background.height=21 \
+          --set caffeine label.color=0xff9ccfd8 \
+          --set caffeine background.color=0xff393552\
+          --set caffeine background.height=19 \
           --set caffeine background.padding_right=7 \
           --set caffeine script="${caffeine-sh}/bin/caffeine.sh" \
           --set caffeine click_script="${caffeine-click-sh}/bin/caffeine-click.sh" \

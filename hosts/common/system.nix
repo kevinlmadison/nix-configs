@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
-      ./tailscale.nix
+    ./tailscale.nix
   ];
 
   networking.networkmanager.enable = true;
@@ -11,7 +14,7 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -70,32 +73,34 @@
   users.users.kelevra = {
     isNormalUser = true;
     description = "Kevin Madison";
-    extraGroups = [ "networkmanager" "wheel" "dbus"];
+    extraGroups = ["networkmanager" "wheel" "dbus"];
     shell = pkgs.zsh;
     #packages = with pkgs; [
     #  firefox
     ##  thunderbird
     #];
   };
-  nix.buildMachines = [ {
-	  hostName = "builder";
-	  system = "x86_64-linux";
-    protocol = "ssh-ng";
-	  # if the builder supports building for multiple architectures, 
-	  # replace the previous line by, e.g.
-	  # systems = ["x86_64-linux" "aarch64-linux"];
-	  maxJobs = 1;
-	  speedFactor = 2;
-	  supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-	  mandatoryFeatures = [ ];
-	}] ;
-	nix.distributedBuilds = true;
-	# optional, useful when the builder has a faster internet connection than yours
-	nix.extraOptions = ''
-	  builders-use-substitutes = true
-	'';
+  nix.buildMachines = [
+    {
+      hostName = "builder";
+      system = "x86_64-linux";
+      protocol = "ssh-ng";
+      # if the builder supports building for multiple architectures,
+      # replace the previous line by, e.g.
+      # systems = ["x86_64-linux" "aarch64-linux"];
+      maxJobs = 1;
+      speedFactor = 2;
+      supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+      mandatoryFeatures = [];
+    }
+  ];
+  nix.distributedBuilds = true;
+  # optional, useful when the builder has a faster internet connection than yours
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
   nix.settings = {
-    experimental-features = [ "flakes" "nix-command" ];
+    experimental-features = ["flakes" "nix-command"];
     # given the users in this list the right to specify additional substituters via:
     #    1. `nixConfig.substituers` in `flake.nix`
     #    2. command line args `--options substituers http://xxx`
@@ -129,7 +134,6 @@
     fzf
     zsh
     wezterm
-    kitty
     lm_sensors
     #clang
     #lsd
@@ -147,8 +151,8 @@
     rofi-wayland
     xfce.thunar
     xfce.thunar-volman
-    (import ../scripts/k_reload.nix { inherit pkgs; })
-    (import ../scripts/swap_kb_layout.nix { inherit pkgs; })
+    (import ../scripts/k_reload.nix {inherit pkgs;})
+    (import ../scripts/swap_kb_layout.nix {inherit pkgs;})
   ];
 
   #programs.zsh.enable = true;
@@ -160,7 +164,7 @@
   #programs.hyprland.enable = true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-hyprland];
-   #
+  #
   #  Some programs need SUID wrappers, can be configured further or are
   ## started in user sessions.
   ## programs.mtr.enable = true;
@@ -168,11 +172,11 @@
   #    enable = true;
   ##   enableSSHSupport = true;
   ## };
-   #
+  #
   ## List services that you want to enable:
   systemd.services.NetworkManager-wait-online = {
     serviceConfig = {
-      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+      ExecStart = ["" "${pkgs.networkmanager}/bin/nm-online -q"];
     };
   };
   ## Enable the OpenSSH daemon.
@@ -180,16 +184,16 @@
   security.pam.sshAgentAuth.enable = true;
   services.openssh = {
     enable = true;
-    ports = [ 22 ];
+    ports = [22];
     # settings = {
     #   PasswordAuthentication = false;
     #   KbdInteractiveAuthentication = false;
     # };
   };
 
-   #
+  #
   ## Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [22];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

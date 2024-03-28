@@ -6,6 +6,7 @@
   ...
 }: let
   default_pkgs = with pkgs; [
+    gohufont
     cmatrix
     bat
     k9s
@@ -44,6 +45,7 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./zellij.nix
+    ./kitty.nix
     ./nushell
     ./starship.nix
     # ./nixvim
@@ -81,7 +83,7 @@ in {
     autojump.enable = true;
     jq.enable = true;
     nix-index.enable = true;
-    htop.enable = true;
+    btop.enable = true;
   };
 
   programs.helix = {
@@ -106,15 +108,6 @@ in {
     enable = true;
     enableNushellIntegration = true;
     enableZshIntegration = true;
-  };
-
-  programs.kitty = {
-    enable = true;
-    font = {
-      package = pkgs.gohufont;
-      name = "GohuFont 14 Nerd Font";
-      size = 10;
-    };
   };
 
   programs.alacritty = {

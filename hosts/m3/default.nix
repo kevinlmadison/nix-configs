@@ -23,9 +23,9 @@ in {
     # neovim
     git
     fzf
-    kitty
     clang
     watch
+    libiconv
   ];
 
   # https://github.com/nix-community/home-manager/issues/4026
