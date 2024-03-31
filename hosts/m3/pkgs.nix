@@ -44,7 +44,6 @@ in {
     '';
     taps = [
       "koekeishiya/formulae"
-      "koekeishiya/formulae"
       "homebrew/cask-fonts"
       "homebrew/cask-versions"
       "homebrew/services"

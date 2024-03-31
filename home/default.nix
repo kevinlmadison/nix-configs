@@ -140,7 +140,8 @@ in {
   programs.lsd = {
     enable = true;
     settings = {
-      icons.when = "never";
+      icons.when = "auto";
+      icons.theme = "fancy";
       date = "relative";
       ignore-globs = [
         ".git"

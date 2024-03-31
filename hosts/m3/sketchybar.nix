@@ -4,14 +4,15 @@
   ...
 }: let
   space-sh = pkgs.writeShellScriptBin "space.sh" ''
-     if [ "$SELECTED" = "true" ]
-     then
-       sketchybar -m --set $NAME background.color=0xffeb6f92
-    sketchybar -m --set $NAME icon.color=0xfff6c177
-     else
-       sketchybar -m --set $NAME background.color=0xff393552
-    sketchybar -m --set $NAME icon.color=0xff9ccfd8
-     fi
+    if [ "$SELECTED" = "true" ]
+    then
+      # sketchybar -m --set $NAME background.color=0xffeb6f92
+      sketchybar -m --set $NAME background.color=0x669ccfd8
+      sketchybar -m --set $NAME icon.color=0xfff6c177
+    else
+      sketchybar -m --set $NAME background.color=0xff393552
+      sketchybar -m --set $NAME icon.color=0xff9ccfd8
+    fi
   '';
   window-title-sh = pkgs.writeShellScriptBin "window_title.sh" ''
     WINDOW_TITLE=$(yabai -m query --windows --window | ${pkgs.jq}/bin/jq -r '.app')
