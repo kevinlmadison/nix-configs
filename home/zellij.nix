@@ -1,7 +1,25 @@
-{...}: {
+{pkgs, ...}: let
+  source = pkgs.fetchurl {
+    url = "https://github.com/rvcas/room/releases/latest/download/room.wasm";
+    sha256 = "15xx83yyjb79xr68mwb3cbw5rwm62ryczc0vv1vcpjzsd1visadj";
+  };
+in {
+  home.file.".config/zellij/plugins/room.wasm".source = source;
+
   programs.zellij = {
     enable = true;
     settings = {
+      shared_except = {
+        _args = ["locked"];
+        bind = {
+          _args = ["Ctrl y"];
+          LaunchOrFocusPlugin = {
+            _args = ["file:~/.config/zellij/plugins/room.wasm"];
+            floating = true;
+            ignore_case = true;
+          };
+        };
+      };
       default_layout = "compact";
       pane_frames = true;
       simplified_ui = true;
