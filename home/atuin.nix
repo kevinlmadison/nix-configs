@@ -13,6 +13,7 @@
       filter_mode = "global";
       dialect = "us";
       enter_accept = false;
+      sync.records = true;
     };
   };
 }
