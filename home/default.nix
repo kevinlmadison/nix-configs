@@ -48,7 +48,7 @@ in {
     ./kitty.nix
     ./nushell
     ./starship.nix
-    # ./nixvim
+    ./atuin.nix
     # inputs.nixvim.homeManagerModules.nixvim
   ];
 
@@ -163,7 +163,14 @@ in {
     };
     oh-my-zsh = {
       enable = true;
-      plugins = ["z" "git" "sudo" "docker" "kubectl"];
+      plugins = [
+        "z"
+        "git"
+        "sudo"
+        "docker"
+        "kubectl"
+        "vi-mode"
+      ];
       theme = "robbyrussell";
     };
   };
