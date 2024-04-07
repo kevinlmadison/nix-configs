@@ -38,6 +38,23 @@
   ];
 
   linux_pkgs = with pkgs; [firefox];
+
+  shellAliases = {
+    l = "lsd -alF";
+    c = "cd";
+    e = "nvim";
+    gcm = "git commit -m";
+    se = "sudoedit";
+    sz = "source ~/.zshrc";
+    conf = "sudoedit /etc/nixos/configuration.nix";
+    sshdemo = "ssh -i ~/repos/platform/k8s/keys/ahq.demo admin@a.demo.analyticshq.com";
+    sshdev = "ssh -i ~/repos/platform/k8s/keys/ahq.dev admin@a.dev.analyticshq.com";
+    sshgov = "ssh -i ~/repos/platform/k8s/keys/ahq.gov admin@a.gov.analyticshq.com";
+    update =
+      if pkgs.system == "aarch64-darwin"
+      then "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure"
+      else "sudo nixos-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
+  };
 in {
   nixpkgs.config = {
     allowUnfree = true;
@@ -52,29 +69,28 @@ in {
     # inputs.nixvim.homeManagerModules.nixvim
   ];
 
+  # programs.nushell = import ./nushell {inherit config pkgs;};
+  home.sessionVariables.EDITOR = "nvim";
   home.username = "kelevra";
   home.homeDirectory =
     if pkgs.system == "aarch64-darwin"
     then "/Users/kelevra"
     else "/home/kelevra";
-  home.shellAliases = {
-    l = "lsd -alF";
-    c = "cd";
-    e = "nvim";
-    gcm = "git commit -m";
-    se = "sudoedit";
-    conf = "sudoedit /etc/nixos/configuration.nix";
-    update =
-      if pkgs.system == "aarch64-darwin"
-      then "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure"
-      else "sudo nixos-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
-  };
 
+  home.shellAliases = shellAliases;
   home.packages =
     if pkgs.system == "x86_64-linux"
     then linux_pkgs ++ default_pkgs
     else default_pkgs;
   fonts.fontconfig.enable = true;
+
+  # programs.nixvim = {
+  #   defaultEditor = true;
+  #   enable = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  #   package = inputs.neovim-flake.packages.${pkgs.system}.default;
+  # };
 
   programs.home-manager.enable = true;
   programs = {
@@ -153,6 +169,7 @@ in {
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
+    sessionVariables.EDITOR = "nvim";
     autocd = true;
     history = {
       save = 10000;

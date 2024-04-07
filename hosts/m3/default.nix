@@ -20,7 +20,6 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
-    # neovim
     git
     fzf
     clang
@@ -32,6 +31,7 @@ in {
   users.users.kelevra = {
     home = "/Users/kelevra";
     name = "kelevra";
+    shell = pkgs.nushell;
   };
 
   services.nix-daemon.enable = true;
@@ -44,7 +44,6 @@ in {
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
-  # programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
@@ -74,6 +73,7 @@ in {
   programs.nix-index.enable = true;
 
   environment.shells = with pkgs; [
+    nushell
     bashInteractive
     freshfetch
     zsh

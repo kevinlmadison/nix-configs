@@ -70,11 +70,12 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
+  # programs.nushell.enable = true;
   users.users.kelevra = {
     isNormalUser = true;
     description = "Kevin Madison";
     extraGroups = ["networkmanager" "wheel" "dbus"];
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
     #packages = with pkgs; [
     #  firefox
     ##  thunderbird
@@ -133,6 +134,8 @@
     git
     fzf
     zsh
+    nushell
+    fd
     wezterm
     lm_sensors
     #clang
@@ -155,12 +158,6 @@
     (import ../scripts/swap_kb_layout.nix {inherit pkgs;})
   ];
 
-  #programs.zsh.enable = true;
-  #programs.zsh.ohMyZsh = {
-  #  enable = true;
-  #  plugins = ["z" "git" "sudo" "docker" "kubectl" ];
-  #  theme = "robbyrussell";
-  #};
   #programs.hyprland.enable = true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-hyprland];

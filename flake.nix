@@ -20,8 +20,8 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Vim
-    # nixvim.url = "github:nix-community/nixvim/9f7c78852f37126244b43e71e5158cdc3d70ad0a";
-    # nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim/9f7c78852f37126244b43e71e5158cdc3d70ad0a";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-flake.url = "github:kevinlmadison/neovim-flake";
   };
