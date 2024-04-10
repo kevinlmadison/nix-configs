@@ -75,7 +75,7 @@
     isNormalUser = true;
     description = "Kevin Madison";
     extraGroups = ["networkmanager" "wheel" "dbus"];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
     #packages = with pkgs; [
     #  firefox
     ##  thunderbird
@@ -83,7 +83,7 @@
   };
   nix.buildMachines = [
     {
-      hostName = "builder";
+      hostName = "vader";
       system = "x86_64-linux";
       protocol = "ssh-ng";
       # if the builder supports building for multiple architectures,

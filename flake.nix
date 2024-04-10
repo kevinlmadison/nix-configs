@@ -44,7 +44,7 @@
           ./hosts/m3/default.nix
           home-manager.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
+            home-manager.useGlobalPkgs = false;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.kelevra = import ./home;
@@ -52,7 +52,6 @@
         ];
       };
     };
-    darwinPackages = self.darwinConfigurations."m3".pkgs;
 
     images = {
       rpi = self.nixosConfigurations.rpi.config.system.build.sdImage;

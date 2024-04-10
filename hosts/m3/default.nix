@@ -31,7 +31,7 @@ in {
   users.users.kelevra = {
     home = "/Users/kelevra";
     name = "kelevra";
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
   };
 
   services.nix-daemon.enable = true;
@@ -73,10 +73,10 @@ in {
   programs.nix-index.enable = true;
 
   environment.shells = with pkgs; [
-    nushell
     bashInteractive
     freshfetch
     zsh
+    nushell
   ];
 
   # add nerd fonts

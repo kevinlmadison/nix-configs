@@ -32,12 +32,11 @@
     helmfile
     terraform
     ansible
-    zoom-us
-    slack
     inputs.neovim-flake.packages.${pkgs.system}.default
+    fd
   ];
 
-  linux_pkgs = with pkgs; [firefox];
+  linux_pkgs = with pkgs; [firefox zoom-us slack];
 
   shellAliases = {
     l = "lsd -alF";
@@ -170,6 +169,7 @@ in {
     enable = true;
     enableAutosuggestions = true;
     sessionVariables.EDITOR = "nvim";
+    sessionVariables.KUBE_EDITOR = "nvim";
     autocd = true;
     history = {
       save = 10000;

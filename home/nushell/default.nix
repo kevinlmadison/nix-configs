@@ -6,6 +6,7 @@
   programs.nushell = {
     enable = true;
     environmentVariables.EDITOR = "nvim";
+    environmentVariables.KUBE_EDITOR = "nvim";
     envFile.source = ./env.nu;
     configFile.source = ./config.nu;
     # shellAliases = config.home.shellAliases; # Our shell aliases are pretty simple
