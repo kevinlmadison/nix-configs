@@ -68,7 +68,7 @@ in {
     ./starship.nix
     ./atuin.nix
     # ./files.nix
-    (import ./display {inherit inputs;})
+    (import ./display {inherit inputs pkgs;})
     # inputs.nixvim.homeManagerModules.nixvim
   ];
 
