@@ -38,7 +38,38 @@
     fd
   ];
 
-  linux_pkgs = with pkgs; [firefox zoom-us slack];
+  linux_pkgs = with pkgs; [
+    firefox
+    zoom-us
+    slack
+    acpi # hardware states
+    brightnessctl # Control background
+    playerctl # Control audio
+
+    (inputs.hyprland.packages."x86_64-linux".hyprland.override {
+      # enableNvidiaPatches = true;
+    })
+    eww
+    wl-clipboard
+    rofi-wayland
+  ];
+
+  darwin_imports = [
+    ./display/darwin.nix
+  ];
+
+  linux_imports = [
+    ./display/hyprland.nix
+    ./display/waybar.nix
+  ];
+
+  base_imports = [
+    ./zellij.nix
+    ./kitty.nix
+    ./nushell
+    ./starship.nix
+    ./atuin.nix
+  ];
 
   shellAliases = {
     l = "lsd -alF";
@@ -60,6 +91,10 @@ in {
   nixpkgs.config = {
     allowUnfree = true;
   };
+  # imports =
+  #   if pkgs.system == "aarch64-darwin"
+  #   then darwin_imports ++ base_imports
+  #   else linux_imports ++ base_imports;
   imports = [
     # Include the results of the hardware scan.
     ./zellij.nix
@@ -67,12 +102,18 @@ in {
     ./nushell
     ./starship.nix
     ./atuin.nix
-    # ./files.nix
-    (import ./display {inherit inputs pkgs;})
+    ./files.nix
+    # ./display
+    # (import ./display {inherit inputs pkgs;})
     # inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  home.sessionVariables.EDITOR = "nvim";
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    WLR_NO_HARDWARE_CURSORS = 1;
+    NIXOS_OZONE_WL = 1;
+  };
+
   home.username = username;
   home.homeDirectory =
     if pkgs.system == "aarch64-darwin"
@@ -170,7 +211,7 @@ in {
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     sessionVariables.EDITOR = "nvim";
     sessionVariables.KUBE_EDITOR = "nvim";
     autocd = true;
