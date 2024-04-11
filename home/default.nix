@@ -2,6 +2,8 @@
   config,
   pkgs,
   inputs,
+  stateVersion,
+  username,
   lib,
   ...
 }: let
@@ -65,32 +67,17 @@ in {
     ./nushell
     ./starship.nix
     ./atuin.nix
-    ./files.nix
+    # ./files.nix
+    (import ./display {inherit inputs;})
     # inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  # programs.nushell = import ./nushell {inherit config pkgs;};
-  # home.file =
-  #   if pkgs.system == "aarch64-darwin"
-  #   then {
-  #     ".yabairc" = import ./darwin/yabai.nix;
-  #     ".skhdrc" = import ./darwin/skhd.nix;
-  #   }
-  #   else {
-  #     ".config/hypr/hyprland.conf" = ./linux/hypr/hyprland.conf;
-  #     ".config/hypr/start.sh" = import ./linux/hypr/start.nix;
-  #     ".config/hypr/wallpaper.png" = ./linux/hypr/wallpaper.png;
-  #     ".config/waybar/config.jsonc" = ./linux/waybar/config.jsonc;
-  #     ".config/waybar/mediaplayer.py" = ./linux/waybar/mediaplayer.py;
-  #     ".config/waybar/style.css" = ./linux/waybar/style.css;
-  #   };
-  # else "sudo nixos-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
   home.sessionVariables.EDITOR = "nvim";
-  home.username = "kelevra";
+  home.username = username;
   home.homeDirectory =
     if pkgs.system == "aarch64-darwin"
-    then "/Users/kelevra"
-    else "/home/kelevra";
+    then "/Users/${username}"
+    else "/home/${username}";
 
   home.shellAliases = shellAliases;
   home.packages =
@@ -191,8 +178,8 @@ in {
       save = 10000;
       path =
         if pkgs.system == "aarch64-darwin"
-        then "/Users/kelevra/.histfile"
-        else "/home/kelevra/.histfile";
+        then "/Users/${username}/.histfile"
+        else "/home/${username}/.histfile";
     };
     oh-my-zsh = {
       enable = true;
@@ -210,6 +197,6 @@ in {
 
   # The state version is required and should stay at the version you
   # originally installed.
-  home.stateVersion = "23.11";
+  home.stateVersion = stateVersion;
   manual.manpages.enable = true;
 }
