@@ -14,6 +14,8 @@
       dialect = "us";
       enter_accept = false;
       sync.records = true;
+      keymap_mode = "vim-normal";
+      filter_mode_shell_up_key_binding = "session";
     };
   };
 }
