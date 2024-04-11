@@ -5,7 +5,7 @@
     # Some cool flake utils for smooth configuration
     systems.url = "github:nix-systems/default";
     flake-utils.url = "github:numtide/flake-utils";
-    flake-utils.inputs.systems.follows = systems;
+    flake-utils.inputs.systems.follows = "systems";
 
     # Nix Packages
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
@@ -32,7 +32,7 @@
     # Dylan **loves** candy
     hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.inputs.systems.follows = systems;
+    hyprland.inputs.systems.follows = "systems";
   };
 
   outputs = {
