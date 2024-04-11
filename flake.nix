@@ -46,6 +46,12 @@
   } @ inputs: let
     username = "kelevra";
     stateVersion = "24.05";
+    home-modules = {
+      home-manager.useGlobalPkgs = false;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = {inherit inputs username stateVersion;};
+      home-manager.users.kelevra = import ./home;
+    };
   in {
     darwinConfigurations = {
       "m3" = nix-darwin.lib.darwinSystem {
@@ -54,13 +60,7 @@
         modules = [
           ./hosts/m3/default.nix
           home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = false;
-            home-manager.useUserPackages = true;
-            # home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.extraSpecialArgs = {inherit inputs username stateVersion;};
-            home-manager.users.kelevra = import ./home;
-          }
+          home-modules
         ];
       };
     };
@@ -72,12 +72,7 @@
         modules = [
           ./hosts/vader/default.nix
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = false;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.kelevra = import ./home;
-          }
+          home-modules
           nixos-hardware.nixosModules.msi-b350-tomahawk
         ];
       };
@@ -88,12 +83,7 @@
         modules = [
           ./hosts/thinkpad/default.nix
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = false;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.kelevra = import ./home;
-          }
+          home-modules
           nixos-hardware.nixosModules.lenovo-thinkpad-x220
         ];
       };
@@ -104,12 +94,7 @@
         modules = [
           ./hosts/xps/default.nix
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = false;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.kelevra = import ./home;
-          }
+          home-modules
           #j-link.nixosModule
           nixos-hardware.nixosModules.dell-xps-13-9360
         ];
