@@ -49,14 +49,14 @@
     home-modules = {
       home-manager.useGlobalPkgs = false;
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = {inherit inputs stateVersion username;};
+      home-manager.extraSpecialArgs = {inherit inputs;};
       home-manager.users."${username}" = import ./home;
     };
   in {
     darwinConfigurations = {
       "m3" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs stateVersion username;};
         modules = [
           ./hosts/m3/default.nix
           home-manager.darwinModules.home-manager
@@ -79,7 +79,7 @@
 
       "thinkpad" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = inputs;
+        specialArgs = {inherit inputs stateVersion username;};
         modules = [
           ./hosts/thinkpad/default.nix
           home-manager.nixosModules.home-manager
