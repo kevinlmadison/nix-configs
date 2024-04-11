@@ -11,7 +11,7 @@
         else 10;
     };
     settings = {
-      # shell = "${pkgs.nushell}/bin/nu --login --interactive";
+      shell = "${pkgs.zsh}/bin/zsh --login --interactive";
       editor = "nvim";
       confirm_os_window_close = "0";
       background_opacity = "0.93";

@@ -179,13 +179,14 @@
   ## Enable the OpenSSH daemon.
   programs.ssh.startAgent = true;
   security.pam.sshAgentAuth.enable = true;
+  security.pam.sshAgentAuth.authorizedKeysFiles = lib.mkForce ["/etc/ssh/authorized_keys.d/%u"];
   services.openssh = {
     enable = true;
     ports = [22];
-    # settings = {
-    #   PasswordAuthentication = false;
-    #   KbdInteractiveAuthentication = false;
-    # };
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
   };
 
   #
