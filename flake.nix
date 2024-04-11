@@ -50,13 +50,13 @@
       home-manager.useGlobalPkgs = false;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = {inherit inputs;};
-      home-manager.users."${username}" = import ./home;
+      home-manager.users.kelevra = import ./home;
     };
   in {
     darwinConfigurations = {
       "m3" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = {inherit inputs stateVersion username;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/m3/default.nix
           home-manager.darwinModules.home-manager
@@ -79,7 +79,7 @@
 
       "thinkpad" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs stateVersion username;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/thinkpad/default.nix
           home-manager.nixosModules.home-manager
@@ -113,7 +113,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs stateVersion;};
+            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.kelevra = import ./home/rpi;
           }
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
