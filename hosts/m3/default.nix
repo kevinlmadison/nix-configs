@@ -13,6 +13,7 @@ in {
     ./tailscale.nix
     ./sketchybar.nix
     ./pkgs.nix
+    ./ripgrep.nix
     # ./nixvim
     # inputs.nixvim.nixDarwinModules.nixvim
     # ./yabai.nix
@@ -22,9 +23,9 @@ in {
   environment.systemPackages = with pkgs; [
     git
     fzf
-    clang
     watch
     libiconv
+    # pkg-config
   ];
 
   # https://github.com/nix-community/home-manager/issues/4026

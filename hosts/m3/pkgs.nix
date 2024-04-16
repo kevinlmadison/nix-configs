@@ -32,6 +32,9 @@ in {
     brews = [
       "yabai"
       "skhd"
+      "libiconv"
+      # "pkg-config"
+      # "openssl"
       #   "bash"
       #   "choose-gui"
       #   "cliclick"

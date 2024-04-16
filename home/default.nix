@@ -13,8 +13,7 @@
     bat
     k9s
     git
-    rustup
-    #firefox  # Not supported on aarch64-darwin
+    # rustup
     font-awesome
     powerline-fonts
     powerline-symbols
@@ -22,10 +21,6 @@
     sd
     (python3.withPackages (ps: with ps; [pypy python-lsp-server python-lsp-ruff]))
     nil
-    clang
-    clang-tools
-    cmake
-    llvm
     entr
     kubectl
     gohufont
@@ -36,9 +31,16 @@
     ansible
     inputs.neovim-flake.packages.${pkgs.system}.default
     fd
+    devenv
+    pkg-config
+    openssl
   ];
 
   linux_pkgs = with pkgs; [
+    clang
+    clang-tools
+    cmake
+    llvm
     firefox
     zoom-us
     slack
@@ -53,6 +55,11 @@
     wl-clipboard
     rofi-wayland
   ];
+
+  home_dir =
+    if pkgs.system == "aarch64-darwin"
+    then "/Users/${username}"
+    else "/home/${username}";
 
   darwin_imports = [
     ./display/darwin.nix
@@ -103,6 +110,7 @@ in {
     ./starship.nix
     ./atuin.nix
     ./files.nix
+    # ./rust/cargo-generate.nix
     # ./display
     # (import ./display {inherit inputs pkgs;})
     # inputs.nixvim.homeManagerModules.nixvim
@@ -110,15 +118,21 @@ in {
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    KUBE_EDITOR = "nvim";
     WLR_NO_HARDWARE_CURSORS = 1;
     NIXOS_OZONE_WL = 1;
+    RUSTUP_HOME = "${home_dir}/.local/share/rustup";
+    LIBRARY_PATH = "/opt/homebrew/lib:/opt/homebrew/opt/libiconv/lib";
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 
+  home.sessionPath = [
+    "~/.cargo/bin"
+    "/kusr/local/bin:/usr/bin:/usr/sbin:/bin:/sbink"
+  ];
+
   home.username = username;
-  home.homeDirectory =
-    if pkgs.system == "aarch64-darwin"
-    then "/Users/${username}"
-    else "/home/${username}";
+  home.homeDirectory = home_dir;
 
   home.shellAliases = shellAliases;
   home.packages =
@@ -137,7 +151,7 @@ in {
 
   programs.home-manager.enable = true;
   programs = {
-    ripgrep.enable = true;
+    ripgrep.enable = false;
     bat.enable = true;
     autojump.enable = true;
     jq.enable = true;
@@ -212,8 +226,11 @@ in {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
-    sessionVariables.EDITOR = "nvim";
-    sessionVariables.KUBE_EDITOR = "nvim";
+    sessionVariables = {
+      EDITOR = "nvim";
+      KUBE_EDITOR = "nvim";
+      RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
+    };
     autocd = true;
     history = {
       save = 10000;
