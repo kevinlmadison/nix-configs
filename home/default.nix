@@ -13,7 +13,7 @@
     bat
     k9s
     git
-    # rustup
+    rustup
     font-awesome
     powerline-fonts
     powerline-symbols
@@ -151,7 +151,7 @@ in {
 
   programs.home-manager.enable = true;
   programs = {
-    ripgrep.enable = false;
+    ripgrep.enable = true;
     bat.enable = true;
     autojump.enable = true;
     jq.enable = true;
@@ -229,7 +229,11 @@ in {
     sessionVariables = {
       EDITOR = "nvim";
       KUBE_EDITOR = "nvim";
-      RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
+      WLR_NO_HARDWARE_CURSORS = 1;
+      NIXOS_OZONE_WL = 1;
+      RUSTUP_HOME = "${home_dir}/.local/share/rustup";
+      LIBRARY_PATH = "/opt/homebrew/lib:/opt/homebrew/opt/libiconv/lib";
+      PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     };
     autocd = true;
     history = {
@@ -239,6 +243,9 @@ in {
         then "/Users/${username}/.histfile"
         else "/home/${username}/.histfile";
     };
+    initExtra = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
     oh-my-zsh = {
       enable = true;
       plugins = [

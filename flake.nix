@@ -34,9 +34,9 @@
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.inputs.systems.follows = "systems";
 
-    # Com'on rust
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    # # Com'on rust
+    # rust-overlay.url = "github:oxalica/rust-overlay";
+    # rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -65,10 +65,10 @@
           ./hosts/m3/default.nix
           home-manager.darwinModules.home-manager
           home-modules
-          ({pkgs, ...}: {
-            nixpkgs.overlays = [inputs.rust-overlay.overlays.default];
-            environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
-          })
+          # ({pkgs, ...}: {
+          #   nixpkgs.overlays = [inputs.rust-overlay.overlays.default];
+          #   environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
+          # })
         ];
       };
     };

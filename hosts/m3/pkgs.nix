@@ -33,6 +33,7 @@ in {
       "yabai"
       "skhd"
       "libiconv"
+      "cargo-generate"
       # "pkg-config"
       # "openssl"
       #   "bash"
