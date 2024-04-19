@@ -494,6 +494,30 @@
         "type": "github"
       }
     },
+    "kmonad": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "nix",
+        "lastModified": 1707655140,
+        "narHash": "sha256-oyq3hCFqQb5Yi28PCW5k1MJnSuGfdyqOqXYH2mcPK/8=",
+        "ref": "refs/heads/master",
+        "rev": "70a5e97518c87ff52be4b403d774e88c5c61e3c1",
+        "revCount": 785,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/kmonad/kmonad?dir=nix"
+      },
+      "original": {
+        "dir": "nix",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/kmonad/kmonad?dir=nix"
+      }
+    },
     "neovim-flake": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -774,6 +798,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "kmonad": "kmonad",
         "neovim-flake": "neovim-flake",
         "nix-darwin": "nix-darwin_2",
         "nixos-hardware": "nixos-hardware",

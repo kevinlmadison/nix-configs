@@ -30,6 +30,7 @@
     terraform
     ansible
     inputs.neovim-flake.packages.${pkgs.system}.default
+    inputs.kmonad.packages.${pkgs.system}.default
     fd
     devenv
     pkg-config
@@ -233,6 +234,7 @@ in {
       NIXOS_OZONE_WL = 1;
       RUSTUP_HOME = "${home_dir}/.local/share/rustup";
       LIBRARY_PATH = "/opt/homebrew/lib:/opt/homebrew/opt/libiconv/lib";
+      TERM = "xterm";
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     };
     autocd = true;

@@ -34,6 +34,10 @@
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.inputs.systems.follows = "systems";
 
+    # At this point I'm stuck with Miryoku
+    kmonad.url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
+    kmonad.inputs.nixpkgs.follows = "nixpkgs";
+
     # # Com'on rust
     # rust-overlay.url = "github:oxalica/rust-overlay";
     # rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +50,7 @@
     nixos-hardware,
     nix-darwin,
     neovim-flake,
+    kmonad,
     ...
   } @ inputs: let
     username = "kelevra";
