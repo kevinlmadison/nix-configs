@@ -245,9 +245,12 @@ in {
         then "/Users/${username}/.histfile"
         else "/home/${username}/.histfile";
     };
-    initExtra = ''
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    '';
+    initExtra =
+      if pkgs.system == "aarch64-darwin"
+      then ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      ''
+      else "";
     oh-my-zsh = {
       enable = true;
       plugins = [
