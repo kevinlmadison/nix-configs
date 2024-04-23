@@ -234,7 +234,7 @@ in {
       NIXOS_OZONE_WL = 1;
       RUSTUP_HOME = "${home_dir}/.local/share/rustup";
       LIBRARY_PATH = "/opt/homebrew/lib:/opt/homebrew/opt/libiconv/lib";
-      TERM = "xterm";
+      TERM = "xterm-256color";
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     };
     autocd = true;
