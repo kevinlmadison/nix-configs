@@ -56,6 +56,7 @@
     username = "kelevra";
     stateVersion = "24.05";
     home-modules = {
+      home-manager.backupFileExtension = "bak";
       home-manager.useGlobalPkgs = false;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = {inherit inputs username stateVersion;};
