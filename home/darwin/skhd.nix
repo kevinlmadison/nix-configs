@@ -33,7 +33,7 @@
     cmd + shift - 9 :  /opt/homebrew/bin/yabai -m window --space 9
     cmd + shift - 0 :  /opt/homebrew/bin/yabai -m window --space 0
 
-    cmd - f :  /opt/homebrew/bin/yabai -m window --toggle float
+    cmd + shift - f :  /opt/homebrew/bin/yabai -m window --toggle float
     shift + cmd - c :  /opt/homebrew/bin/yabai -m space --create
     shift + cmd - d :  /opt/homebrew/bin/yabai -m space --destroy
   '';

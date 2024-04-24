@@ -13,6 +13,7 @@ in {
     ./tailscale.nix
     ./sketchybar.nix
     ./pkgs.nix
+    ./ollama.nix
     # ./nixvim
     # inputs.nixvim.nixDarwinModules.nixvim
     # ./yabai.nix
@@ -23,7 +24,9 @@ in {
     git
     fzf
     watch
-    libiconv
+    colima
+    docker
+    # libiconv
     # pkg-config
   ];
 
