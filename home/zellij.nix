@@ -1,22 +1,48 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   source = pkgs.fetchurl {
     url = "https://github.com/rvcas/room/releases/latest/download/room.wasm";
     sha256 = "15xx83yyjb79xr68mwb3cbw5rwm62ryczc0vv1vcpjzsd1visadj";
   };
+
+  # Undo this version lock after closing out of all sessions
+  pkgs_0_39_2 = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/e89cf1c932006531f454de7d652163a9a5c86668.tar.gz";
+  }) {};
 in {
   home.file.".config/zellij/plugins/room.wasm".source = source;
 
   programs.zellij = {
     enable = true;
+    package = pkgs_0_39_2.zellij;
     settings = {
-      shared_except = {
-        _args = ["locked"];
-        bind = {
-          _args = ["Ctrl y"];
-          LaunchOrFocusPlugin = {
-            _args = ["file:~/.config/zellij/plugins/room.wasm"];
-            floating = true;
-            ignore_case = true;
+      keybinds = {
+        normal = builtins.listToAttrs (lib.genList (n: {
+            name = "bind \"Alt ${toString (n + 1)}\"";
+            value = {
+              GoToTab = n + 1;
+              SwitchToMode = "Normal";
+            };
+          })
+          9);
+        # normal = {
+        #   "bind \"Alt 1\"" = {
+        #     GoToTab = 1;
+        #     SwitchToMode = "Normal";
+        #   };
+        # };
+        shared_except = {
+          _args = ["locked"];
+          "bind \"Ctrl y\"" = {
+            LaunchOrFocusPlugin = {
+              _args = ["file:~/.config/zellij/plugins/room.wasm"];
+              floating = true;
+              ignore_case = true;
+            };
           };
         };
       };

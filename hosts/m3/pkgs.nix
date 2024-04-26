@@ -34,6 +34,7 @@ in {
       "skhd"
       "libiconv"
       "cargo-generate"
+      "pulumi"
       # "pkg-config"
       # "openssl"
       #   "bash"
