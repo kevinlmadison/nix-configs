@@ -158,6 +158,7 @@ in {
     jq.enable = true;
     nix-index.enable = true;
     btop.enable = true;
+    direnv.enable = true;
   };
 
   programs.helix = {
