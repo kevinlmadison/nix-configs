@@ -14,6 +14,9 @@
       sketchybar -m --set $NAME icon.color=0xff9ccfd8
     fi
   '';
+  space-click-sh = pkgs.writeShellScriptBin "space-click.sh" ''
+    yabai -m space --focus $SID 2>/dev/null
+  '';
   window-title-sh = pkgs.writeShellScriptBin "window_title.sh" ''
     WINDOW_TITLE=$(yabai -m query --windows --window | ${pkgs.jq}/bin/jq -r '.app')
     if [[ $WINDOW_TITLE != "" ]]; then
@@ -199,7 +202,8 @@ in {
             --set "$s" background.height=19 \
             --set "$s" background.padding_left=7 \
             --set "$s" script="${space-sh}/bin/space.sh"\
-            --set "$s" click_script="/etc/profiles/per-user/kelevra/bin/kitty"
+            --set "$s" click_script="${space-click-sh}/bin/space-click.sh"
+            # --set "$s" click_script="yabai -m space --focus $SID 2>/dev/null"
         done
 
       ############## ITEM DEFAULTS ###############

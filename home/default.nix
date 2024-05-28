@@ -8,9 +8,20 @@
   ...
 }: let
   default_pkgs = with pkgs; [
+    # cool rust rewrites of posix tools
+    sd # sed
+    fd # find
+    procs # ps
+    dust # du
+    tokei
+    hyperfine
+    bandwhich
+    grex
+    bat-extras.batgrep
+
+    nixos-rebuild
     gohufont
     cmatrix
-    bat
     k9s
     git
     rustup
@@ -18,12 +29,18 @@
     powerline-fonts
     powerline-symbols
     nerdfonts
-    sd
-    (python3.withPackages (ps: with ps; [pypy python-lsp-server python-lsp-ruff]))
+    (python311.withPackages (ps:
+      with ps; [
+        python-lsp-server
+        python-lsp-ruff
+        # python-lsp-black
+        pylsp-rope
+        pylsp-mypy
+        pyls-isort
+      ]))
     nil
     entr
     kubectl
-    gohufont
     awscli
     kubernetes-helm
     helmfile
@@ -31,10 +48,11 @@
     ansible
     inputs.neovim-flake.packages.${pkgs.system}.default
     inputs.kmonad.packages.${pkgs.system}.default
-    fd
     devenv
     pkg-config
     openssl
+    wireshark
+    kubeshark
   ];
 
   linux_pkgs = with pkgs; [
@@ -83,9 +101,11 @@
     l = "lsd -alF";
     c = "cd";
     e = "nvim";
+    diff = "delta";
     gcm = "git commit -m";
     se = "sudoedit";
     sz = "source ~/.zshrc";
+    tg = "batgrep";
     conf = "sudoedit /etc/nixos/configuration.nix";
     sshdemo = "ssh -i ~/repos/platform/k8s/keys/ahq.demo admin@a.demo.analyticshq.com";
     sshdev = "ssh -i ~/repos/platform/k8s/keys/ahq.dev admin@a.dev.analyticshq.com";
@@ -129,7 +149,7 @@ in {
 
   home.sessionPath = [
     "~/.cargo/bin"
-    "/kusr/local/bin:/usr/bin:/usr/sbin:/bin:/sbink"
+    "/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbink"
   ];
 
   home.username = username;
@@ -152,15 +172,24 @@ in {
 
   programs.home-manager.enable = true;
   programs = {
+    # cool rust rewrites of posix tools
     ripgrep.enable = true;
+    tealdeer.enable = true;
     bat.enable = true;
+
     autojump.enable = true;
     jq.enable = true;
     nix-index.enable = true;
     btop.enable = true;
-    direnv.enable = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    config = {
+      whitelist.prefix = ["~/repos/platform/k8s"];
+      hide_env_diff = true;
+    };
+  };
   programs.helix = {
     enable = true;
     defaultEditor = false;
@@ -177,6 +206,15 @@ in {
     enable = true;
     userName = "kevinlmadison";
     userEmail = "coolklm121@gmail.com";
+    delta = {
+      enable = true;
+      options = {
+        syntax-theme = "gruvbox-dark";
+        dark = true;
+        line-numbers = true;
+        side-by-side = true;
+      };
+    };
   };
 
   programs.zoxide = {

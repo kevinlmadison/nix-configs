@@ -44,11 +44,18 @@ in {
               ignore_case = true;
             };
           };
+          "bind \"Alt f\"" = {
+            LaunchPlugin = {
+              _args = ["zellij:filepicker"];
+              close_on_selection = true;
+            };
+          };
         };
       };
       default_layout = "compact";
       pane_frames = true;
       simplified_ui = true;
+      # layout_dir = "~/.config/zellij/layouts";
       theme = "rose-pine";
       # if pkgs.system == "aarch64-darwin"
       # then "gruvbox-dark"
