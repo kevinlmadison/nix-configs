@@ -18,7 +18,7 @@ in {
 
   programs.zellij = {
     enable = true;
-    package = pkgs_0_39_2.zellij;
+    # package = pkgs_0_39_2.zellij;
     settings = {
       keybinds = {
         normal = builtins.listToAttrs (lib.genList (n: {

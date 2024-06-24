@@ -63,6 +63,7 @@ in {
       "slack"
       "zoom"
       "firefox"
+      "discord"
       # "google-chrome"
       #   # "1password-beta"
       #   # "android-platform-tools"

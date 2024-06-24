@@ -62,6 +62,12 @@
       home-manager.extraSpecialArgs = {inherit inputs username stateVersion;};
       home-manager.users.kelevra = import ./home;
     };
+    allowUnfree = {
+      nixpkgs.config = {
+        allowUnfree = true;
+        allowUnfreePredicate = pkg: true;
+      };
+    };
   in {
     darwinConfigurations = {
       "m3" = nix-darwin.lib.darwinSystem {
@@ -71,6 +77,7 @@
           ./hosts/m3/default.nix
           home-manager.darwinModules.home-manager
           home-modules
+          allowUnfree
           # ({pkgs, ...}: {
           #   nixpkgs.overlays = [inputs.rust-overlay.overlays.default];
           #   environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
