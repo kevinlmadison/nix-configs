@@ -26,6 +26,7 @@ in {
     watch
     colima
     docker
+    istioctl
     # libiconv
     # pkg-config
   ];
@@ -83,7 +84,6 @@ in {
       };
     };
   };
-  services.activate-system.enable = true;
   programs.nix-index.enable = true;
 
   environment.shells = with pkgs; [
@@ -94,7 +94,7 @@ in {
   ];
 
   # add nerd fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "Iosevka"];})
   ];
 

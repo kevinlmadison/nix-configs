@@ -7,8 +7,14 @@
   lib,
   ...
 }: let
+  yq_pkgs = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/05bbf675397d5366259409139039af8077d695ce.tar.gz";
+  }) {};
+
+  myPkg = yq_pkgs.yq;
   default_pkgs = with pkgs; [
     # cool rust rewrites of posix tools
+    # myPkg
     sd # sed
     fd # find
     procs # ps
@@ -18,6 +24,7 @@
     bandwhich
     grex
     bat-extras.batgrep
+    wget
 
     nixos-rebuild
     gohufont
@@ -53,6 +60,7 @@
     openssl
     wireshark
     kubeshark
+    mongosh
   ];
 
   linux_pkgs = with pkgs; [

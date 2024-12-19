@@ -36,6 +36,9 @@ in {
       "cargo-generate"
       "pulumi"
       "codecrafters"
+      "yq"
+      "apache-spark"
+      "mas"
       # "pkg-config"
       # "openssl"
       #   "bash"
@@ -64,7 +67,14 @@ in {
       "zoom"
       "firefox"
       "discord"
-      # "google-chrome"
+      "expressvpn"
+      "android-file-transfer"
+      "google-chrome"
+      "chatgpt"
+      "anki"
+      "transmission"
+      "jellyfin"
+      "love"
       #   # "1password-beta"
       #   # "android-platform-tools"
       #   "blockblock"
@@ -88,15 +98,16 @@ in {
       #   "kitty"
     ];
 
-    # masApps = {
-    #   DaisyDisk = 411643860;
-    #   "WiFi Explorer" = 494803304;
-    #   "Reeder 5." = 1529448980;
-    #   "1Password for Safari" = 1569813296;
-    #   "Dark Reader for Safari" = 1438243180;
-    #   "Redirect Web for Safari" = 1571283503;
-    #   "Vimlike" = 1584519802;
-    #   "AdGuard for Safari" = 1440147259;
-    # };
+    masApps = {
+      "Ziti Desktop Edge" = 1460484572;
+      # DaisyDisk = 411643860;
+      # "WiFi Explorer" = 494803304;
+      # "Reeder 5." = 1529448980;
+      # "1Password for Safari" = 1569813296;
+      # "Dark Reader for Safari" = 1438243180;
+      # "Redirect Web for Safari" = 1571283503;
+      # "Vimlike" = 1584519802;
+      # "AdGuard for Safari" = 1440147259;
+    };
   };
 }
