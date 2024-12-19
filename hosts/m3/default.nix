@@ -95,7 +95,10 @@ in {
 
   # add nerd fonts
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "Iosevka"];})
+    nerdfonts
+    # nerdfonts.hack
+    # nerdfonts.droid-sans-mono
+    # nerdfonts.iosevka
   ];
 
   #system-defaults.nix
