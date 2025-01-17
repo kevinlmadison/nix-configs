@@ -25,6 +25,7 @@
     grex
     bat-extras.batgrep
     wget
+    cosign
 
     nixos-rebuild
     gohufont
@@ -35,7 +36,7 @@
     font-awesome
     powerline-fonts
     powerline-symbols
-    nerdfonts
+    # nerdfonts
     (python311.withPackages (ps:
       with ps; [
         python-lsp-server

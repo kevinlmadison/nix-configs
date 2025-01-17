@@ -39,6 +39,8 @@ in {
       "yq"
       "apache-spark"
       "mas"
+      "kubectl-cnpg"
+      "kubelogin"
       # "pkg-config"
       # "openssl"
       #   "bash"
