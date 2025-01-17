@@ -30,7 +30,7 @@
     neovim-flake.url = "github:kevinlmadison/neovim-flake";
 
     # Dylan **loves** candy
-    hyprland.url = "github:hyprwm/Hyprland/v0.39.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.41.0";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.inputs.systems.follows = "systems";
 
