@@ -6,7 +6,7 @@
 }: let
   source = pkgs.fetchurl {
     url = "https://github.com/rvcas/room/releases/latest/download/room.wasm";
-    sha256 = "15xx83yyjb79xr68mwb3cbw5rwm62ryczc0vv1vcpjzsd1visadj";
+    sha256 = "sha256-t6GPP7OOztf6XtBgzhLF+edUU294twnu0y5uufXwrkw=";
   };
 
   # Undo this version lock after closing out of all sessions
