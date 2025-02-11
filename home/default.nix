@@ -39,7 +39,7 @@
     # nerdfonts
     (python311.withPackages (ps:
       with ps; [
-        python-lsp-server
+        # python-lsp-server
         python-lsp-ruff
         # python-lsp-black
         pylsp-rope
@@ -62,6 +62,7 @@
     wireshark
     kubeshark
     mongosh
+    go
   ];
 
   linux_pkgs = with pkgs; [
