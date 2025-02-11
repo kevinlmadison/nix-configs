@@ -29,10 +29,10 @@
     # Peronal Neovim Flake
     neovim-flake.url = "github:kevinlmadison/neovim-flake";
 
-    # Dylan **loves** candy
-    hyprland.url = "github:hyprwm/Hyprland/v0.47.1";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.inputs.systems.follows = "systems";
+    # # Dylan **loves** candy
+    # hyprland.url = "github:hyprwm/Hyprland/v0.47.1";
+    # hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    # hyprland.inputs.systems.follows = "systems";
 
     # At this point I'm stuck with Miryoku
     kmonad.url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
