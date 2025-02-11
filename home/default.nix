@@ -77,9 +77,9 @@
     brightnessctl # Control background
     playerctl # Control audio
 
-    (inputs.hyprland.packages."x86_64-linux".hyprland.override {
-      # enableNvidiaPatches = true;
-    })
+    # (inputs.hyprland.packages."x86_64-linux".hyprland.override {
+    #   # enableNvidiaPatches = true;
+    # })
     eww
     wl-clipboard
     rofi-wayland
