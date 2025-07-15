@@ -30,6 +30,7 @@ in {
     onActivation.upgrade = true;
     onActivation.cleanup = "zap";
     brews = [
+      "unar"
       "yabai"
       "skhd"
       "libiconv"
@@ -41,9 +42,9 @@ in {
       "mas"
       "kubectl-cnpg"
       "kubelogin"
-      "source-to-image"
-      # "func"
-      # "kn"
+      "func"
+      "qemu"
+      "hashicorp/tap/packer"
       # "pkg-config"
       # "openssl"
       #   "bash"
@@ -63,6 +64,7 @@ in {
       "homebrew/services"
       "codecrafters-io/tap"
       "knative-extensions/kn-plugins"
+      "hashicorp/tap"
       # "amar1729/formulae"
       # "colindean/fonts-nonfree"
       # "kidonng/malt"
@@ -82,6 +84,7 @@ in {
       "jellyfin"
       "love"
       "signal"
+      "vnc-viewer"
       #   # "1password-beta"
       #   # "android-platform-tools"
       #   "blockblock"

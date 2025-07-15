@@ -26,6 +26,9 @@
     bat-extras.batgrep
     wget
     cosign
+    xdelta
+    argocd
+    skopeo
 
     nixos-rebuild
     gohufont
@@ -49,13 +52,13 @@
     nil
     entr
     kubectl
-    awscli
+    awscli2
     kubernetes-helm
     helmfile
     terraform
     ansible
     inputs.neovim-flake.packages.${pkgs.system}.default
-    inputs.kmonad.packages.${pkgs.system}.default
+    # inputs.kmonad.packages.${pkgs.system}.default
     devenv
     pkg-config
     openssl
@@ -294,12 +297,18 @@ in {
         then "/Users/${username}/.histfile"
         else "/home/${username}/.histfile";
     };
+
     initExtra =
-      if pkgs.system == "aarch64-darwin"
-      then ''
-        eval "$(/opt/homebrew/bin/brew shellenv)"
       ''
-      else "";
+        zitisec() {
+                kubectl -n kubezt get secrets ziti-controller-admin-secret \
+                  -o go-template='{{index .data "admin-password" | base64decode }}'
+              }
+      ''
+      + lib.optionalString (pkgs.system == "aarch64-darwin") ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      '';
+
     oh-my-zsh = {
       enable = true;
       plugins = [

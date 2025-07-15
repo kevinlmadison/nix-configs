@@ -27,6 +27,7 @@ in {
     colima
     docker
     istioctl
+    # kmonad
     # libiconv
     # pkg-config
   ];
@@ -38,7 +39,17 @@ in {
     shell = pkgs.zsh;
   };
 
-  services.nix-daemon.enable = true;
+  # services.nix-daemon.enable = true;
+  # services.kmonad = {
+  #   enable = true;
+  #   keyboards = {
+  #     myKMonadOutput = {
+  #       device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+  #       config = builtins.readFile /Users/kelevra/.config/kmonad/miryoku_kmonad.kbd;
+  #     };
+  #   };
+  # };
+  nix.enable = true;
   nix.package = pkgs.nix;
 
   # Necessary for using flakes on this system.
@@ -94,12 +105,12 @@ in {
   ];
 
   # add nerd fonts
-  fonts.packages = with pkgs; [
-    nerdfonts
-    # nerdfonts.hack
-    # nerdfonts.droid-sans-mono
-    # nerdfonts.iosevka
-  ];
+  # fonts.packages = with pkgs; [
+  #   # nerdfonts
+  #   nerdfonts.hack
+  #   nerdfonts.droid-sans-mono
+  #   nerdfonts.iosevka
+  # ];
 
   #system-defaults.nix
   system.keyboard = {
@@ -174,5 +185,6 @@ in {
   # '';
 
   # Use touch ID for sudo auth
-  security.pam.enableSudoTouchIdAuth = true;
+  # security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 }
