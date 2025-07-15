@@ -9,6 +9,7 @@
   ];
 
   networking.networkmanager.enable = true;
+  virtualisation.docker.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -75,7 +76,7 @@
   users.users.kelevra = {
     isNormalUser = true;
     description = "Kevin Madison";
-    extraGroups = ["networkmanager" "wheel" "dbus"];
+    extraGroups = ["networkmanager" "wheel" "dbus" "docker"];
     shell = pkgs.zsh;
     #packages = with pkgs; [
     #  firefox
@@ -131,6 +132,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    discord
     killall
     git
     fzf
@@ -161,7 +163,7 @@
 
   #programs.hyprland.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-hyprland];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde];
   #
   #  Some programs need SUID wrappers, can be configured further or are
   ## started in user sessions.

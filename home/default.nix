@@ -29,6 +29,10 @@
     xdelta
     argocd
     skopeo
+    func
+    kn
+    faas-cli
+    xdg-desktop-portal
 
     nixos-rebuild
     gohufont
@@ -71,6 +75,7 @@
   linux_pkgs = with pkgs; [
     clang
     clang-tools
+    libstdcxx5
     cmake
     llvm
     firefox
