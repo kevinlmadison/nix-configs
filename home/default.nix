@@ -32,7 +32,6 @@
     func
     kn
     faas-cli
-    xdg-desktop-portal
 
     nixos-rebuild
     gohufont
@@ -84,6 +83,7 @@
     acpi # hardware states
     brightnessctl # Control background
     playerctl # Control audio
+    xdg-desktop-portal
 
     # (inputs.hyprland.packages."x86_64-linux".hyprland.override {
     #   # enableNvidiaPatches = true;
@@ -173,7 +173,7 @@ in {
   home.username = username;
   home.homeDirectory = home_dir;
 
-  home.shellAliases = shellAliases;
+  home.shellAliases = lib.mkForce shellAliases;
   home.packages =
     if pkgs.system == "x86_64-linux"
     then linux_pkgs ++ default_pkgs

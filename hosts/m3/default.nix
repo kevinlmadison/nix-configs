@@ -113,6 +113,7 @@ in {
   # ];
 
   #system-defaults.nix
+  system.primaryUser = "kelevra";
   system.keyboard = {
     enableKeyMapping = true;
     remapCapsLockToControl = true;
@@ -139,12 +140,6 @@ in {
       Clicking = true;
       TrackpadThreeFingerDrag = true;
       Dragging = true;
-    };
-    # Apple firewall config:
-    alf = {
-      globalstate = 2;
-      loggingenabled = 0;
-      stealthenabled = 1;
     };
     loginwindow = {
       GuestEnabled = false;

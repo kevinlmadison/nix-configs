@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -10,7 +11,7 @@
     envFile.source = ./env.nu;
     configFile.source = ./config.nu;
     # shellAliases = config.home.shellAliases; # Our shell aliases are pretty simple
-    shellAliases = {
+    shellAliases = lib.mkDefault {
       # l = "lsd -alF";
       l = "ls";
       c = "cd";
