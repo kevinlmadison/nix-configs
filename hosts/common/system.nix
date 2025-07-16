@@ -163,7 +163,7 @@
 
   #programs.hyprland.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk]; #pkgs.xdg-desktop-portal-kde];
   #
   #  Some programs need SUID wrappers, can be configured further or are
   ## started in user sessions.

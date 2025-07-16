@@ -74,7 +74,7 @@
   linux_pkgs = with pkgs; [
     clang
     clang-tools
-    libstdcxx5
+    # libstdcxx5
     cmake
     llvm
     firefox
