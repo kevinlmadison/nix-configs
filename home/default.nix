@@ -130,7 +130,7 @@
     sshgov = "ssh -i ~/repos/platform/k8s/keys/ahq.gov admin@a.gov.analyticshq.com";
     update =
       if pkgs.system == "aarch64-darwin"
-      then "darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure"
+      then "sudo NIXPKGS_ALLOW_BROKEN=1 darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure"
       else "sudo nixos-rebuild switch --flake ~/repos/nix-configs/#$(hostname) --impure";
   };
 in {

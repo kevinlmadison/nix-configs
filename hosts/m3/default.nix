@@ -27,6 +27,7 @@ in {
     colima
     docker
     istioctl
+    dpkg
     # kmonad
     # libiconv
     # pkg-config

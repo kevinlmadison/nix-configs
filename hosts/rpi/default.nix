@@ -1,11 +1,12 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   user = "kelevra";
   password = "testtest";
-in
-{
-  imports = [ ./tailscale.nix ];
+in {
+  imports = [./tailscale.nix];
 
   networking.networkmanager.enable = true;
   time.timeZone = "America/New_York";
@@ -25,13 +26,12 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
   users.users."${user}" = {
     isNormalUser = true;
     description = "Kevin Madison";
-    extraGroups = [ "networkmanager" "wheel" "dbus"];
+    extraGroups = ["networkmanager" "wheel" "dbus"];
     shell = pkgs.zsh;
     password = password;
     #packages = with pkgs; [
@@ -40,7 +40,7 @@ in
     #];
   };
   nix.settings = {
-    experimental-features = [ "flakes" "nix-command" ];
+    experimental-features = ["flakes" "nix-command"];
     trusted-users = ["kelevra"];
     substituters = [
       "https://mirror.sjtu.edu.cn/nix-channels/store"
@@ -51,6 +51,7 @@ in
     ];
   };
   nixpkgs.config = {
+    allowBroken = true;
     allowUnfree = true;
   };
   environment.systemPackages = with pkgs; [
@@ -62,17 +63,17 @@ in
     gnumake
     gcc
     curl
-    (import ../scripts/swap_kb_layout.nix { inherit pkgs; })
+    (import ../scripts/swap_kb_layout.nix {inherit pkgs;})
   ];
 
   systemd.services.NetworkManager-wait-online = {
     serviceConfig = {
-      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+      ExecStart = ["" "${pkgs.networkmanager}/bin/nm-online -q"];
     };
   };
   programs.ssh.startAgent = true;
-  security.pam.enableSSHAgentAuth = true; 
+  security.pam.enableSSHAgentAuth = true;
   services.openssh.enable = true;
-  services.openssh.ports = [ 22 ];
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  services.openssh.ports = [22];
+  networking.firewall.allowedTCPPorts = [22];
 }

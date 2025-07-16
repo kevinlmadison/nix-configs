@@ -137,6 +137,7 @@ in {
       jetbrains-mono
       gohufont
       hack-font
+      dpkg
     ];
     config = ''
       #!/usr/bin/env bash

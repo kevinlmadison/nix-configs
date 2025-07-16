@@ -8,7 +8,7 @@
     flake-utils.inputs.systems.follows = "systems";
 
     # Nix Packages
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Home Manager
