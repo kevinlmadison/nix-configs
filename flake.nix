@@ -29,15 +29,6 @@
     # Peronal Neovim Flake
     neovim-flake.url = "github:kevinlmadison/neovim-flake";
 
-    # # Dylan **loves** candy
-    # hyprland.url = "github:hyprwm/Hyprland/v0.47.1";
-    # hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    # hyprland.inputs.systems.follows = "systems";
-
-    # At this point I'm stuck with Miryoku
-    # kmonad.url = "github:kmonad/kmonad?dir=nix";
-    # kmonad.inputs.nixpkgs.follows = "nixpkgs";
-
     # # Com'on rust
     # rust-overlay.url = "github:oxalica/rust-overlay";
     # rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +41,6 @@
     nixos-hardware,
     nix-darwin,
     neovim-flake,
-    # kmonad,
     ...
   } @ inputs: let
     username = "kelevra";
