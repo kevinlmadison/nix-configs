@@ -55,6 +55,7 @@
     nil
     entr
     kubectl
+    stern
     awscli2
     kubernetes-helm
     helmfile
@@ -149,6 +150,7 @@ in {
     ./starship.nix
     ./atuin.nix
     ./files.nix
+    ./k9s.nix
     # ./rust/cargo-generate.nix
     # ./display
     # (import ./display {inherit inputs pkgs;})
