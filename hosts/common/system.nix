@@ -35,8 +35,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = false;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = false;
 
   services.xserver.windowManager.xmonad = {
     enable = true;
@@ -45,10 +45,13 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.blueman.enable = true;
+  services.pulseaudio.enable = false;
 
   # Enable sound with pipewire.
   # sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   security.rtkit.enable = true;
   security.sudo.enable = true;
   security.sudo.configFile = ''
@@ -161,7 +164,6 @@
     (import ../scripts/swap_kb_layout.nix {inherit pkgs;})
   ];
 
-  #programs.hyprland.enable = true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk]; #pkgs.xdg-desktop-portal-kde];
   #
