@@ -10,15 +10,15 @@
   };
 
   # Undo this version lock after closing out of all sessions
-  pkgs_0_39_2 = import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/e89cf1c932006531f454de7d652163a9a5c86668.tar.gz";
+  oldPkgs = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/eb0e0f21f15c559d2ac7633dc81d079d1caf5f5f.tar.gz";
   }) {};
 in {
   home.file.".config/zellij/plugins/room.wasm".source = source;
 
   programs.zellij = {
     enable = true;
-    # package = pkgs_0_39_2.zellij;
+    package = oldPkgs.zellij;
     settings = {
       keybinds = {
         normal = builtins.listToAttrs (lib.genList (n: {
@@ -53,10 +53,11 @@ in {
         };
       };
       default_layout = "compact";
-      pane_frames = true;
+      pane_frames = false;
       simplified_ui = true;
       # layout_dir = "~/.config/zellij/layouts";
-      theme = "rose-pine";
+      theme = "gruvbox-dark";
+      # theme = "rose-pine";
       # if pkgs.system == "aarch64-darwin"
       # then "gruvbox-dark"
       # else "dracula";

@@ -22,12 +22,9 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Nix Vim
-    nixvim.url = "github:nix-community/nixvim/9f7c78852f37126244b43e71e5158cdc3d70ad0a";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
     # Peronal Neovim Flake
-    neovim-flake.url = "github:kevinlmadison/neovim-flake";
+    # neovim-flake.url = "github:kevinlmadison/neovim-flake";
+    neovim-flake.url = "github:kevinlmadison/tolerable-nvim";
 
     # # Com'on rust
     # rust-overlay.url = "github:oxalica/rust-overlay";

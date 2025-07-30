@@ -4,6 +4,7 @@
     then {
       ".yabairc" = import ./darwin/yabai.nix;
       ".skhdrc" = import ./darwin/skhd.nix;
+      ".config/ghostty/config".source = ./darwin/ghostty.nix;
     }
     else {
       ".config/hypr/hyprland.conf".source = ./linux/hypr/hyprland.conf;
