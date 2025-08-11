@@ -13,5 +13,6 @@
       ".config/waybar/config.jsonc".source = ./linux/waybar/config.jsonc;
       ".config/waybar/mediaplayer.py".source = ./linux/waybar/mediaplayer.py;
       ".config/waybar/style.css".source = ./linux/waybar/style.css;
+      ".config/ghostty/config".source = ./linux/ghostty/ghostty.nix;
     };
 }

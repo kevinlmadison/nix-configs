@@ -81,6 +81,7 @@
     clang-tools
     # libstdcxx5
     cmake
+    ghostty
     llvm
     firefox
     zoom-us
@@ -127,7 +128,6 @@ in {
   };
   imports = [
     ./zellij.nix
-    ./kitty.nix
     ./nushell
     ./starship.nix
     ./atuin.nix
