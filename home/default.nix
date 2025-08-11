@@ -30,8 +30,12 @@
     argocd
     skopeo
     func
-    kn
-    faas-cli
+    # zig
+    zls
+    # openai-whisper
+    # whisper-cpp
+    # kn
+    # faas-cli
 
     nixos-rebuild
     gohufont
@@ -58,10 +62,10 @@
     stern
     awscli2
     kubernetes-helm
-    helmfile
-    terraform
+    # helmfile
     ansible
     inputs.neovim-flake.packages.${pkgs.system}.default
+    inputs.zig.packages.${pkgs.system}.master
     # inputs.kmonad.packages.${pkgs.system}.default
     devenv
     pkg-config
@@ -99,23 +103,6 @@
     then "/Users/${username}"
     else "/home/${username}";
 
-  darwin_imports = [
-    ./display/darwin.nix
-  ];
-
-  linux_imports = [
-    ./display/hyprland.nix
-    ./display/waybar.nix
-  ];
-
-  base_imports = [
-    ./zellij.nix
-    ./kitty.nix
-    ./nushell
-    ./starship.nix
-    ./atuin.nix
-  ];
-
   shellAliases = {
     l = "lsd -alF";
     c = "cd";
@@ -138,12 +125,7 @@ in {
   nixpkgs.config = {
     allowUnfree = true;
   };
-  # imports =
-  #   if pkgs.system == "aarch64-darwin"
-  #   then darwin_imports ++ base_imports
-  #   else linux_imports ++ base_imports;
   imports = [
-    # Include the results of the hardware scan.
     ./zellij.nix
     ./kitty.nix
     ./nushell
@@ -151,10 +133,6 @@ in {
     ./atuin.nix
     ./files.nix
     ./k9s.nix
-    # ./rust/cargo-generate.nix
-    # ./display
-    # (import ./display {inherit inputs pkgs;})
-    # inputs.nixvim.homeManagerModules.nixvim
   ];
 
   home.sessionVariables = {
@@ -169,7 +147,7 @@ in {
 
   home.sessionPath = [
     "~/.cargo/bin"
-    "/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbink"
+    "/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
   ];
 
   home.username = username;
@@ -181,14 +159,6 @@ in {
     then linux_pkgs ++ default_pkgs
     else default_pkgs;
   fonts.fontconfig.enable = true;
-
-  # programs.nixvim = {
-  #   defaultEditor = true;
-  #   enable = true;
-  #   viAlias = true;
-  #   vimAlias = true;
-  #   package = inputs.neovim-flake.packages.${pkgs.system}.default;
-  # };
 
   programs.home-manager.enable = true;
   programs = {
@@ -206,7 +176,7 @@ in {
   programs.direnv = {
     enable = true;
     config = {
-      whitelist.prefix = ["~/repos/platform/k8s"];
+      whitelist.prefix = ["~/repos/kubezt/k8s"];
       hide_env_diff = true;
     };
   };

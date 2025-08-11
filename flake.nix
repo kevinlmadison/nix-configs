@@ -26,6 +26,7 @@
     # neovim-flake.url = "github:kevinlmadison/neovim-flake";
     neovim-flake.url = "github:kevinlmadison/tolerable-nvim";
 
+    zig.url = "github:mitchellh/zig-overlay";
     # # Com'on rust
     # rust-overlay.url = "github:oxalica/rust-overlay";
     # rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +39,7 @@
     nixos-hardware,
     nix-darwin,
     neovim-flake,
+    zig,
     ...
   } @ inputs: let
     username = "kelevra";
