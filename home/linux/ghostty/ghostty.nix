@@ -9,7 +9,7 @@
 # with sensible defaults for all options. Users should only need to set
 # options that they want to change from the default.
 #
-# Run `ghostty +show-config --default --docs` to view a list of
+# Run `ghostty +show-config --default --docs` to view a list ofghost
 # all available config options and their default values.
 #
 # Additionally, each config option is also explained in detail
@@ -24,6 +24,16 @@ window-padding-x = 1
 theme = GruvboxDarkHard
 background-opacity = 0.8
 background-blur = true
+keybind = unconsumed:alt+one=goto_tab:1
+keybind = unconsumed:alt+two=goto_tab:2
+keybind = unconsumed:alt+three=goto_tab:3
+keybind = unconsumed:alt+four=goto_tab:4
+keybind = unconsumed:alt+five=goto_tab:5
+keybind = unconsumed:alt+six=goto_tab:6
+keybind = unconsumed:alt+seven=goto_tab:7
+keybind = unconsumed:alt+eight=goto_tab:8
+keybind = unconsumed:alt+nine=last_tab
+
 # theme = rose-pine
 #
 # # Spacing around the equals sign does not matter.
