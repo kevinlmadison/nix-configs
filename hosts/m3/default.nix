@@ -14,8 +14,6 @@ in {
     ./sketchybar.nix
     ./pkgs.nix
     ./ollama.nix
-    # ./nixvim
-    # inputs.nixvim.nixDarwinModules.nixvim
     # ./yabai.nix
     # ./skhd.nix
   ];
