@@ -20,6 +20,7 @@ in {
     # ./skhd.nix
   ];
 
+  documentation.man.enable = true;
   environment.systemPackages = with pkgs; [
     git
     fzf

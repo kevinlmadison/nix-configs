@@ -234,6 +234,7 @@ in {
     else default_pkgs ++ font_packages;
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
+  programs.man.enable = true;
   programs = {
     # cool rust rewrites of posix tools
     ripgrep.enable = true;
@@ -351,8 +352,10 @@ in {
     initExtra =
       ''
         zitisec() {
+                echo; \
                 kubectl -n kubezt get secrets ziti-controller-admin-secret \
-                  -o go-template='{{index .data "admin-password" | base64decode }}'
+                  -o go-template='{{index .data "admin-password" | base64decode }}'; \
+                echo;
               }
       ''
       + lib.optionalString (pkgs.system == "aarch64-darwin") ''

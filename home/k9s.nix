@@ -5,32 +5,32 @@
     views = {
       "v1/pods" = {
         sortColumn = "NAME:asc";
-        columns = [
-          "NAME"
-          "VERSION:.metadata.labels.version"
-          "READY"
-          "STATUS"
-          "RESTARTS"
-          "CPU"
-          "MEM"
-          "PF"
-          "IP"
-          "NODE|W"
-          "AGE"
-          "LAST RESTART|W"
-          "%CPU/R|H"
-          "%CPU/L|H"
-          "%MEM/R|H"
-          "%MEM/L|H"
-          "CPU/RL|H"
-          "MEM/RL|H"
-          "SERVICE-ACCOUNT|H"
-          "NOMINATED NODE|H"
-          "READINESS GATES|H"
-          "QOS|H"
-          "LABELS|H"
-          "VALID|H"
-        ];
+        # columns = [
+        #   "NAME"
+        #   "VERSION:.metadata.labels.version"
+        #   "READY"
+        #   "STATUS"
+        #   "RESTARTS"
+        #   "CPU"
+        #   "MEM"
+        #   "PF"
+        #   "IP"
+        #   "NODE|W"
+        #   "AGE"
+        #   "LAST RESTART|W"
+        #   "%CPU/R|H"
+        #   "%CPU/L|H"
+        #   "%MEM/R|H"
+        #   "%MEM/L|H"
+        #   "CPU/RL|H"
+        #   "MEM/RL|H"
+        #   "SERVICE-ACCOUNT|H"
+        #   "NOMINATED NODE|H"
+        #   "READINESS GATES|H"
+        #   "QOS|H"
+        #   "LABELS|H"
+        #   "VALID|H"
+        # ];
       };
     };
 
