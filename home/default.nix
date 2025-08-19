@@ -115,6 +115,7 @@
     cmatrix
     k9s
     git
+    dig
     rustup
     font-awesome
     powerline-fonts
@@ -133,11 +134,12 @@
     nil
     entr
     kubectl
+    istioctl
     stern
-    awscli2
+    # awscli2
     kubernetes-helm
     # helmfile
-    ansible
+    # ansible
     inputs.neovim-flake.packages.${pkgs.system}.default
     inputs.zig.packages.${pkgs.system}.master
     # inputs.kmonad.packages.${pkgs.system}.default
