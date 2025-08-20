@@ -280,11 +280,11 @@
         "tolerable": "tolerable"
       },
       "locked": {
-        "lastModified": 1755642517,
-        "narHash": "sha256-e6pjM1SPZlm7Q9Suhz5TMcH7uZKkPdMlGMMLZGtC2uk=",
+        "lastModified": 1755643757,
+        "narHash": "sha256-MnrMjr1Y0qiztr8LOSKImSbbJkiEahyYnXCHl2bc1+c=",
         "owner": "kevinlmadison",
         "repo": "tolerable-nvim",
-        "rev": "51bb910a9abf88648d2f9ca4184c8a5946e7ae84",
+        "rev": "fe8fb9cca8ef95e58e9d2cfecb073706e591f256",
         "type": "github"
       },
       "original": {
