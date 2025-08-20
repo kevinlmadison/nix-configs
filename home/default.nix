@@ -139,7 +139,7 @@
     # awscli2
     kubernetes-helm
     # helmfile
-    # ansible
+    ansible
     inputs.neovim-flake.packages.${pkgs.system}.default
     inputs.zig.packages.${pkgs.system}.master
     # inputs.kmonad.packages.${pkgs.system}.default
