@@ -21,7 +21,8 @@
 # # separated by equals signs.
 font-family = GohuFont 14 Nerd Font
 window-padding-x = 1
-theme = Kanagawa Dragon
+theme = Builtin Tango Dark
+# theme = Kanagawa Dragon
 background-opacity = 0.8
 background-blur = true
 keybind = unconsumed:alt+one=goto_tab:1
