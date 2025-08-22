@@ -155,6 +155,7 @@
   linux_pkgs = with pkgs; [
     clang
     clang-tools
+    kanshi
     # libstdcxx5
     cmake
     ghostty
@@ -209,6 +210,7 @@ in {
     ./atuin.nix
     ./files.nix
     ./k9s.nix
+    ./linux/kanshi
   ];
 
   home.sessionVariables = {
