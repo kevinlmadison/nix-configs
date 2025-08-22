@@ -7,6 +7,7 @@
     # Include the results of the hardware scan.
     ../common/system.nix
     ../common/tailscale.nix
+    ../common/kanshi.nix
     # ./android.nix
     ./hardware-configuration.nix
   ];

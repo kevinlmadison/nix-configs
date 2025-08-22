@@ -203,15 +203,16 @@ in {
   nixpkgs.config = {
     allowUnfree = true;
   };
-  imports = [
-    ./zellij.nix
-    ./nushell
-    ./starship.nix
-    ./atuin.nix
-    ./files.nix
-    ./k9s.nix
-    ./linux/kanshi
-  ];
+
+  imports =
+    [
+      ./zellij.nix
+      ./nushell
+      ./starship.nix
+      ./atuin.nix
+      ./files.nix
+      ./k9s.nix
+    ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
