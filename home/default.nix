@@ -333,7 +333,9 @@ in {
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
     autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
     sessionVariables = {
       EDITOR = "nvim";
       KUBE_EDITOR = "nvim";
@@ -353,7 +355,7 @@ in {
         else "/home/${username}/.histfile";
     };
 
-    initExtra =
+    initContent =
       ''
         zitisec() {
                 echo; \
