@@ -86,7 +86,7 @@ in {
       "love"
       "signal"
       "ghostty"
-      # "vnc-viewer"
+      "vnc-viewer"
       #   # "1password-beta"
       #   # "android-platform-tools"
       #   "blockblock"

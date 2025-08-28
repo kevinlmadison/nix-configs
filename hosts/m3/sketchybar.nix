@@ -148,9 +148,9 @@ in {
   services.sketchybar = {
     enable = true;
     extraPackages = with pkgs; [
-      jetbrains-mono
-      gohufont
-      hack-font
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.gohufont
+      nerd-fonts.hack
       dpkg
     ];
     config = ''
