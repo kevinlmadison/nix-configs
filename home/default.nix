@@ -110,6 +110,9 @@
     # kn
     # faas-cli
 
+    jekyll
+    ruby_3_4
+
     nixos-rebuild
     gohufont
     cmatrix
@@ -190,10 +193,7 @@
     se = "sudoedit";
     sz = "source ~/.zshrc";
     tg = "batgrep";
-    conf = "sudoedit /etc/nixos/configuration.nix";
-    sshdemo = "ssh -i ~/repos/platform/k8s/keys/ahq.demo admin@a.demo.analyticshq.com";
-    sshdev = "ssh -i ~/repos/platform/k8s/keys/ahq.dev admin@a.dev.analyticshq.com";
-    sshgov = "ssh -i ~/repos/platform/k8s/keys/ahq.gov admin@a.gov.analyticshq.com";
+    sshkzt = "ssh -i ~/repos/kubezt/k8s/keys/$CLUSTER_NAME/$CLUSTER_NAME admin@a.$(echo $CLUSTER_NAME | awk -F'-' '{print $2}' ).kubezt.com";
     update =
       if pkgs.system == "aarch64-darwin"
       then "sudo NIXPKGS_ALLOW_BROKEN=1 darwin-rebuild switch --flake ~/repos/nix-configs/#m3 --impure"
@@ -366,6 +366,20 @@ in {
       ''
       + lib.optionalString (pkgs.system == "aarch64-darwin") ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
+      ''
+      + lib.optionalString (pkgs.system == "aarch64-darwin") ''
+        ziticp() {
+                kubectl -n kubezt get secrets ziti-controller-admin-secret \
+                  -o go-template='{{index .data "admin-password" | base64decode }}' \
+                  | pbcopy
+              }
+      ''
+      + lib.optionalString (pkgs.system == "x86_64-linux") ''
+        ziticp() {
+                kubectl -n kubezt get secrets ziti-controller-admin-secret \
+                  -o go-template='{{index .data "admin-password" | base64decode }}' \
+                  | wl-copy
+              }
       '';
 
     oh-my-zsh = {
