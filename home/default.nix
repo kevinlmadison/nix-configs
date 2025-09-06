@@ -103,6 +103,8 @@
     argocd
     skopeo
     func
+    cmake
+    vcpkg
     # zig
     zls
     # openai-whisper
@@ -160,7 +162,6 @@
     clang-tools
     kanshi
     # libstdcxx5
-    cmake
     ghostty
     llvm
     firefox
