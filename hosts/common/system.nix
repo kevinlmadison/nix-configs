@@ -159,7 +159,7 @@
     waybar
     libnotify
     swww
-    rofi-wayland
+    rofi
     xfce.thunar
     xfce.thunar-volman
     (import ../scripts/k_reload.nix {inherit pkgs;})

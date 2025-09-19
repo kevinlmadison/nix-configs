@@ -177,7 +177,7 @@
     # })
     eww
     wl-clipboard
-    rofi-wayland
+    rofi
   ];
 
   home_dir =

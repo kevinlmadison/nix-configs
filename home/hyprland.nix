@@ -19,6 +19,6 @@
     })
     eww
     wl-clipboard
-    rofi-wayland
+    rofi
   ];
 }
