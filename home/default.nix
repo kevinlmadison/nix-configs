@@ -126,7 +126,9 @@
     powerline-fonts
     powerline-symbols
     # nerdfonts
-    python3
+    uv
+    python312
+    python312Packages.pip
     # (python311.withPackages (ps:
     #   with ps; [
     #     python-lsp-server
