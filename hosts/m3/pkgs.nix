@@ -87,6 +87,8 @@ in {
       "signal"
       "ghostty"
       "vnc-viewer"
+      "blender"
+      "zed"
       #   # "1password-beta"
       #   # "android-platform-tools"
       #   "blockblock"

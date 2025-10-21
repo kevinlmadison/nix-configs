@@ -96,7 +96,7 @@
     hyperfine
     bandwhich
     grex
-    bat-extras.batgrep
+    # bat-extras.batgrep
     wget
     cosign
     xdelta
@@ -104,7 +104,7 @@
     skopeo
     func
     cmake
-    vcpkg
+    # vcpkg
     # zig
     zls
     # openai-whisper
@@ -112,8 +112,8 @@
     # kn
     # faas-cli
 
-    jekyll
-    ruby_3_4
+    # jekyll
+    # ruby_3_4
 
     nixos-rebuild
     gohufont
@@ -182,6 +182,9 @@
     rofi
   ];
 
+  darwin_pkgs = with pkgs; [
+  ];
+
   home_dir =
     if pkgs.system == "aarch64-darwin"
     then "/Users/${username}"
@@ -238,7 +241,7 @@ in {
   home.packages =
     if pkgs.system == "x86_64-linux"
     then linux_pkgs ++ default_pkgs ++ font_packages
-    else default_pkgs ++ font_packages;
+    else darwin_pkgs ++ default_pkgs ++ font_packages;
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
   programs.man.enable = true;
@@ -318,7 +321,7 @@ in {
 
   programs.fzf = {
     enable = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
   };
 
   programs.lsd = {

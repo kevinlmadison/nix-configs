@@ -18,7 +18,8 @@ in {
 
   programs.zellij = {
     enable = true;
-    package = oldPkgs.zellij;
+    package = pkgs.zellij;
+    # package = oldPkgs.zellij;
     settings = {
       keybinds = {
         normal = builtins.listToAttrs (lib.genList (n: {
@@ -52,11 +53,19 @@ in {
           };
         };
       };
+      plugins = {
+        compact-bar = {
+          _props = {
+            location = "zellij:compact-bar";
+          };
+          tooltip = "F2";
+        };
+      };
       default_layout = "compact";
-      pane_frames = false;
+      pane_frames = true;
       simplified_ui = true;
       # layout_dir = "~/.config/zellij/layouts";
-      theme = "kanagawa";
+      theme = "ansi";
       # theme = "rose-pine";
       # if pkgs.system == "aarch64-darwin"
       # then "gruvbox-dark"
