@@ -89,6 +89,7 @@ in {
       "vnc-viewer"
       "blender"
       "zed"
+      "steam"
       #   # "1password-beta"
       #   # "android-platform-tools"
       #   "blockblock"

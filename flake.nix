@@ -8,8 +8,8 @@
     flake-utils.inputs.systems.follows = "systems";
 
     # Nix Packages
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
@@ -20,16 +20,17 @@
 
     # Nix Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Peronal Neovim Flake
     # neovim-flake.url = "github:kevinlmadison/neovim-flake";
     neovim-flake.url = "github:kevinlmadison/tolerable-nvim";
 
     zig.url = "github:mitchellh/zig-overlay";
+
     # # Com'on rust
-    # rust-overlay.url = "github:oxalica/rust-overlay";
-    # rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -39,6 +40,7 @@
     nixos-hardware,
     nix-darwin,
     neovim-flake,
+    rust-overlay,
     zig,
     ...
   } @ inputs: let
@@ -62,15 +64,16 @@
       "m3" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {inherit inputs;};
+
         modules = [
           ./hosts/m3/default.nix
           home-manager.darwinModules.home-manager
           home-modules
           allowUnfree
-          # ({pkgs, ...}: {
-          #   nixpkgs.overlays = [inputs.rust-overlay.overlays.default];
-          #   environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
-          # })
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [inputs.rust-overlay.overlays.default];
+            environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
+          })
         ];
       };
     };

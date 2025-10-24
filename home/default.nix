@@ -92,19 +92,21 @@
     fd # find
     procs # ps
     dust # du
+    # yazi
     tokei
     hyperfine
     bandwhich
     grex
     # bat-extras.batgrep
     wget
-    cosign
+    # cosign
     xdelta
     argocd
     skopeo
     func
     cmake
     # vcpkg
+    jujutsu
     # zig
     zls
     # openai-whisper
@@ -153,7 +155,7 @@
     devenv
     pkg-config
     openssl
-    wireshark
+    # wireshark
     kubeshark
     mongosh
     go
@@ -212,6 +214,7 @@ in {
 
   imports = [
     ./zellij.nix
+    ./yazi.nix
     ./nushell
     ./starship.nix
     ./atuin.nix
@@ -264,11 +267,12 @@ in {
       hide_env_diff = true;
     };
   };
+
   programs.helix = {
     enable = true;
     defaultEditor = false;
     settings = {
-      theme = "gruvbox";
+      theme = "autumn_night";
       editor.line-number = "relative";
       editor.cursor-shape.insert = "bar";
       editor.lsp.enable = true;
