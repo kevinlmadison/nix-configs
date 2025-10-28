@@ -185,6 +185,7 @@
   ];
 
   darwin_pkgs = with pkgs; [
+    ffmpeg_6-full
   ];
 
   home_dir =

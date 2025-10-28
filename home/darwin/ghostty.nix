@@ -24,10 +24,10 @@ window-padding-x = 1
 macos-titlebar-style = hidden
 macos-non-native-fullscreen = visible-menu
 # theme = Darkmatrix
-# theme = Batman
-theme = Builtin Tango Dark
-background-opacity = 0.8
-background-blur = true
+theme = Cyberpunk
+# theme = Builtin Tango Dark
+# background-opacity = 0.8
+# background-blur = true
 # theme = rose-pine
 #
 # # Spacing around the equals sign does not matter.
