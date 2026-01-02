@@ -19,16 +19,18 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
-font-family = GohuFont 14 Nerd Font
+# font-family = GohuFont 14 Nerd Font
+# font-family = ZedMono Nerd Font Mono
+font-family = FiraCode Nerd Font Mono
 window-padding-x = 1
 macos-titlebar-style = hidden
 macos-non-native-fullscreen = visible-menu
-# theme = Darkmatrix
-theme = Cyberpunk
-# theme = Builtin Tango Dark
-# background-opacity = 0.8
-# background-blur = true
-# theme = rose-pine
+# theme = Ghostty Default Style Dark
+# theme = Gruvbox Material Dark
+theme = Builtin Tango Dark
+background-opacity = 0.8
+background-blur = true
+# theme = Rose Pine
 #
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:

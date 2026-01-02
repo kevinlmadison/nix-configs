@@ -109,6 +109,8 @@
     jujutsu
     # zig
     zls
+    # iproute2
+    codex
     # openai-whisper
     # whisper-cpp
     # kn
@@ -159,6 +161,7 @@
     kubeshark
     mongosh
     go
+    claude-code
   ];
 
   linux_pkgs = with pkgs; [

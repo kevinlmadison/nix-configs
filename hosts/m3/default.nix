@@ -13,7 +13,7 @@ in {
     ./tailscale.nix
     ./sketchybar.nix
     ./pkgs.nix
-    ./ollama.nix
+    # ./ollama.nix
     # ./yabai.nix
     # ./skhd.nix
   ];
